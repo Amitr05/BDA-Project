@@ -1,0 +1,9 @@
+# Dependencies for Global Event & US Stock Market Analysis (Phase 1)
+yfinance>=0.2.36
+pandas>=2.0.0,<=2.2.3
+pyspark>=3.5.0
+streamlit>=1.30.0
+plotly>=5.18.0
+pyarrow>=14.0.0,<=15.0.2
+fastparquet>=2024.2.0
+pytest>=8.0.0
