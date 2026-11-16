@@ -147,33 +147,67 @@ def process_market_dataset(
     return processed_df
 
 
+
 def run_preprocessing_pipeline(
     spark: Optional[SparkSession] = None,
     sp500_raw_path: str = "data/raw/sp500_raw.csv",
     vix_raw_path: str = "data/raw/vix_raw.csv",
     sp500_out_path: str = "data/processed/sp500_processed.parquet",
-    vix_out_path: str = "data/processed/vix_processed.parquet"
+    vix_out_path: str = "data/processed/vix_processed.parquet",
+    nasdaq_raw_path: str = "data/raw/nasdaq_raw.csv",
+    nasdaq_out_path: str = "data/processed/nasdaq_processed.parquet",
+    dow_jones_raw_path: str = "data/raw/dow_jones_raw.csv",
+    dow_jones_out_path: str = "data/processed/dow_jones_processed.parquet",
+    russell2000_raw_path: str = "data/raw/russell2000_raw.csv",
+    russell2000_out_path: str = "data/processed/russell2000_processed.parquet"
 ) -> dict:
     """
-    Execute preprocessing pipeline for S&P 500 and VIX.
+    Execute preprocessing for all four US equity indices
+    and the VIX volatility indicator.
     """
+
     spark_created = False
+
     if spark is None:
         spark = get_spark_session("MarketPreprocessing")
         spark_created = True
 
     try:
-        logger.info("Executing S&P 500 preprocessing pipeline...")
-        sp500_df = process_market_dataset(spark, sp500_raw_path, sp500_out_path)
-
-        logger.info("Executing VIX preprocessing pipeline...")
-        vix_df = process_market_dataset(spark, vix_raw_path, vix_out_path)
-
-        return {
-            "sp500": sp500_df,
-            "vix": vix_df
+        # Configure all four equity indices
+        index_datasets = {
+            "sp500": (sp500_raw_path, sp500_out_path),
+            "nasdaq": (nasdaq_raw_path, nasdaq_out_path),
+            "dow_jones": (dow_jones_raw_path, dow_jones_out_path),
+            "russell2000": (russell2000_raw_path, russell2000_out_path)
         }
+
+        processed_datasets = {}
+
+        # Process each equity index independently
+        for index_name, (raw_path, output_path) in index_datasets.items():
+
+            logger.info(
+                f"Executing {index_name.upper()} preprocessing pipeline..."
+            )
+
+            processed_datasets[index_name] = process_market_dataset(
+                spark,
+                raw_path,
+                output_path
+            )
+
+        # Process VIX separately
+        logger.info("Executing VIX preprocessing pipeline...")
+
+        processed_datasets["vix"] = process_market_dataset(
+            spark,
+            vix_raw_path,
+            vix_out_path
+        )
+
+        return processed_datasets
+
     finally:
         if spark_created:
-            # We keep session or let caller manage; in standalone run, can keep active
+            # Preserve existing session lifecycle behaviour.
             pass

@@ -18,13 +18,24 @@ DEFAULT_END_DATE = "2026-02-01"
 
 RAW_DATA_PATHS = {
     "^GSPC": "data/raw/sp500_raw.csv",
+    "^IXIC": "data/raw/nasdaq_raw.csv",
+    "^DJI": "data/raw/dow_jones_raw.csv",
+    "^RUT": "data/raw/russell2000_raw.csv",
     "^VIX": "data/raw/vix_raw.csv"
 }
 
 
-def is_valid_local_csv(file_path: str, min_rows: int = 100) -> bool:
+
+def is_valid_local_csv(
+    file_path: str,
+    min_rows: int = 100,
+    start_date: str = DEFAULT_START_DATE,
+    end_date: str = DEFAULT_END_DATE,
+    tolerance_days: int = 7
+) -> bool:
     """
-    Check if a raw CSV file exists, is non-empty, and contains expected columns.
+    Validate that a local CSV exists, has the required structure,
+    sufficient records, and covers the requested date range.
     """
     if not os.path.exists(file_path):
         return False
@@ -33,18 +44,56 @@ def is_valid_local_csv(file_path: str, min_rows: int = 100) -> bool:
         if os.path.getsize(file_path) < 100:
             return False
 
+        # Check required columns
         sample_df = pd.read_csv(file_path, nrows=5)
         required_cols = {"Date", "Open", "High", "Low", "Close", "Volume"}
+
         if not required_cols.issubset(set(sample_df.columns)):
             return False
 
-        # Check total lines count roughly
-        with open(file_path, "r", encoding="utf-8") as f:
-            line_count = sum(1 for _ in f)
-        return line_count > min_rows
+        # Read dates and check record count
+        date_df = pd.read_csv(file_path, usecols=["Date"])
+
+        if len(date_df) <= min_rows:
+            return False
+
+        # Validate date values
+        dates = pd.to_datetime(date_df["Date"], errors="coerce")
+
+        if dates.isna().any():
+            logger.warning(f"Invalid dates found in {file_path}")
+            return False
+
+        actual_start = dates.min()
+        actual_end = dates.max()
+
+        requested_start = pd.Timestamp(start_date)
+        requested_end = pd.Timestamp(end_date)
+
+        # Allow tolerance for weekends and market holidays
+        earliest_allowed = requested_start + pd.Timedelta(days=tolerance_days)
+        latest_allowed = requested_end - pd.Timedelta(days=tolerance_days)
+
+        if actual_start > earliest_allowed:
+            logger.warning(
+                f"Dataset starts too late: {actual_start.date()} "
+                f"(expected around {start_date})"
+            )
+            return False
+
+        if actual_end < latest_allowed:
+            logger.warning(
+                f"Dataset ends too early: {actual_end.date()} "
+                f"(expected around {end_date})"
+            )
+            return False
+
+        return True
+
     except Exception as e:
         logger.warning(f"Validation failed for local file {file_path}: {e}")
         return False
+
 
 
 def fetch_historical_ticker(
@@ -113,7 +162,11 @@ def ingest_market_data(
     if output_path is None:
         output_path = RAW_DATA_PATHS.get(ticker, f"data/raw/{ticker.replace('^', '').lower()}_raw.csv")
 
-    if not force_download and is_valid_local_csv(output_path):
+    if not force_download and is_valid_local_csv(
+    output_path,
+    start_date=start_date,
+    end_date=end_date
+):
         logger.info(f"Local file already exists and is valid: {output_path}. Skipping download.")
         return output_path
 
@@ -124,13 +177,50 @@ def ingest_market_data(
     return output_path
 
 
+
 def ingest_all_raw_data(force_download: bool = False) -> dict:
     """
-    Ingest all primary Phase 1 market datasets: S&P 500 and VIX.
+    Ingest all configured market datasets independently.
+
+    If one ticker fails, continue attempting the remaining tickers.
+    Returns a dictionary containing successfully ingested datasets.
     """
     results = {}
+    failures = {}
+
     for ticker, path in RAW_DATA_PATHS.items():
-        results[ticker] = ingest_market_data(ticker=ticker, output_path=path, force_download=force_download)
+        try:
+            logger.info(f"Starting ingestion for {ticker}...")
+
+            results[ticker] = ingest_market_data(
+                ticker=ticker,
+                output_path=path,
+                force_download=force_download
+            )
+
+        except Exception as e:
+            failures[ticker] = str(e)
+            logger.exception(
+                f"Failed to ingest {ticker}. Continuing with remaining datasets."
+            )
+
+    # Final ingestion summary
+    logger.info("=" * 60)
+    logger.info("MARKET DATA INGESTION SUMMARY")
+    logger.info("=" * 60)
+
+    logger.info(f"Successful datasets: {len(results)}")
+
+    for ticker, path in results.items():
+        logger.info(f"SUCCESS | {ticker} | {path}")
+
+    logger.info(f"Failed datasets: {len(failures)}")
+
+    for ticker, error in failures.items():
+        logger.error(f"FAILED | {ticker} | {error}")
+
+    logger.info("=" * 60)
+
     return results
 
 
