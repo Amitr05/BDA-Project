@@ -60,4 +60,9 @@ def test_is_valid_local_csv():
         with open(valid_csv, "w") as f:
             f.writelines(rows)
 
-        assert is_valid_local_csv(valid_csv, min_rows=100)
+        assert is_valid_local_csv(
+            valid_csv,
+            min_rows=100,
+            start_date="2020-01-01",
+            end_date="2020-01-28"
+        )

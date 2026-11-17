@@ -1,0 +1,5 @@
+{
+  "BAD_TICKER_XXX": "No market data returned from Yahoo Finance (possibly delisted or invalid ticker)",
+  "FDXF": "No market data returned from Yahoo Finance (possibly delisted or invalid ticker)",
+  "HONA": "No market data returned from Yahoo Finance (possibly delisted or invalid ticker)"
+}

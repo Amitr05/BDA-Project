@@ -1,0 +1,523 @@
+company_id,ticker,company_name,sector,industry,primary_exchange,market_cap_tier,indices
+CMP_MMM,MMM,3M,Industrials,Industrial Conglomerates,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_AOS,AOS,A. O. Smith,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_ABT,ABT,Abbott Laboratories,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_ABBV,ABBV,AbbVie,Health Care,Biotechnology,NYSE,Large Cap,S&P 500
+CMP_ACN,ACN,Accenture,Information Technology,IT Consulting & Other Services,NYSE,Large Cap,S&P 500
+CMP_ADBE,ADBE,Adobe Inc.,Information Technology,Application Software,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_AMD,AMD,Advanced Micro Devices,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_AES,AES,AES Corporation,Utilities,Independent Power Producers & Energy Traders,NYSE,Large Cap,S&P 500
+CMP_AFL,AFL,Aflac,Financials,Life & Health Insurance,NYSE,Large Cap,S&P 500
+CMP_A,A,Agilent Technologies,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_APD,APD,Air Products,Materials,Industrial Gases,NYSE,Large Cap,S&P 500
+CMP_ABNB,ABNB,Airbnb,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NYSE,Large Cap,S&P 500
+CMP_AKAM,AKAM,Akamai Technologies,Information Technology,Internet Services & Infrastructure,NYSE,Large Cap,S&P 500
+CMP_ALB,ALB,Albemarle Corporation,Materials,Specialty Chemicals,NYSE,Large Cap,S&P 500
+CMP_ARE,ARE,Alexandria Real Estate Equities,Real Estate,Office REITs,NYSE,Large Cap,S&P 500
+CMP_ALGN,ALGN,Align Technology,Health Care,Health Care Supplies,NYSE,Large Cap,S&P 500
+CMP_ALLE,ALLE,Allegion,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_LNT,LNT,Alliant Energy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_ALL,ALL,Allstate,Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_GOOGL,GOOGL,Alphabet Inc. (Class A),Communication Services,Interactive Media & Services,NASDAQ,Mega Cap,S&P 500; NASDAQ Composite
+CMP_GOOG,GOOG,Alphabet Inc. (Class C),Communication Services,Interactive Media & Services,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_MO,MO,Altria,Consumer Staples,Tobacco,NYSE,Large Cap,S&P 500
+CMP_AMZN,AMZN,Amazon,Consumer Discretionary,Broadline Retail,NASDAQ,Mega Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_AMCR,AMCR,Amcor,Materials,Paper & Plastic Packaging Products & Materials,NYSE,Large Cap,S&P 500
+CMP_AEE,AEE,Ameren,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_AEP,AEP,American Electric Power,Utilities,Electric Utilities,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_AXP,AXP,American Express,Financials,Consumer Finance,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_AIG,AIG,American International Group,Financials,Multi-line Insurance,NYSE,Large Cap,S&P 500
+CMP_AMT,AMT,American Tower,Real Estate,Telecom Tower REITs,NYSE,Large Cap,S&P 500
+CMP_AWK,AWK,American Water Works,Utilities,Water Utilities,NYSE,Large Cap,S&P 500
+CMP_AMP,AMP,Ameriprise Financial,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_AME,AME,Ametek,Industrials,Electrical Components & Equipment,NYSE,Large Cap,S&P 500
+CMP_AMGN,AMGN,Amgen,Health Care,Biotechnology,NASDAQ,Large Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_APH,APH,Amphenol,Information Technology,Electronic Components,NYSE,Large Cap,S&P 500
+CMP_ADI,ADI,Analog Devices,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_AON,AON,Aon plc,Financials,Insurance Brokers,NYSE,Large Cap,S&P 500
+CMP_APA,APA,APA Corporation,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_APO,APO,Apollo Global Management,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_AAPL,AAPL,Apple Inc.,Information Technology,"Technology Hardware, Storage & Peripherals",NASDAQ,Mega Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_AMAT,AMAT,Applied Materials,Information Technology,Semiconductor Materials & Equipment,NYSE,Large Cap,S&P 500
+CMP_APP,APP,AppLovin,Communication Services,Advertising,NYSE,Large Cap,S&P 500
+CMP_APTV,APTV,Aptiv,Consumer Discretionary,Automotive Parts & Equipment,NYSE,Large Cap,S&P 500
+CMP_ACGL,ACGL,Arch Capital Group,Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_ADM,ADM,Archer Daniels Midland,Consumer Staples,Agricultural Products & Services,NYSE,Large Cap,S&P 500
+CMP_ARES,ARES,Ares Management,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_ANET,ANET,Arista Networks,Information Technology,Communications Equipment,NYSE,Large Cap,S&P 500
+CMP_AJG,AJG,Arthur J. Gallagher & Co.,Financials,Insurance Brokers,NYSE,Large Cap,S&P 500
+CMP_AIZ,AIZ,Assurant,Financials,Multi-line Insurance,NYSE,Large Cap,S&P 500
+CMP_T,T,AT&T,Communication Services,Integrated Telecommunication Services,NYSE,Large Cap,S&P 500
+CMP_ATO,ATO,Atmos Energy,Utilities,Gas Utilities,NYSE,Large Cap,S&P 500
+CMP_ADSK,ADSK,Autodesk,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_ADP,ADP,Automatic Data Processing,Industrials,Human Resource & Employment Services,NYSE,Large Cap,S&P 500
+CMP_AZO,AZO,AutoZone,Consumer Discretionary,Automotive Retail,NYSE,Large Cap,S&P 500
+CMP_AVY,AVY,Avery Dennison,Materials,Paper & Plastic Packaging Products & Materials,NYSE,Large Cap,S&P 500
+CMP_AXON,AXON,Axon Enterprise,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_BKR,BKR,Baker Hughes,Energy,Oil & Gas Equipment & Services,NYSE,Large Cap,S&P 500
+CMP_BALL,BALL,Ball Corporation,Materials,"Metal, Glass & Plastic Containers",NYSE,Large Cap,S&P 500
+CMP_BAC,BAC,Bank of America,Financials,Diversified Banks,NYSE,Large Cap,S&P 500
+CMP_BAX,BAX,Baxter International,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_BDX,BDX,Becton Dickinson,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_BRK-B,BRK-B,Berkshire Hathaway,Financials,Multi-Sector Holdings,NYSE,Large Cap,S&P 500
+CMP_BBY,BBY,Best Buy,Consumer Discretionary,Computer & Electronics Retail,NYSE,Large Cap,S&P 500
+CMP_TECH,TECH,Bio-Techne,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_BIIB,BIIB,Biogen,Health Care,Biotechnology,NYSE,Large Cap,S&P 500
+CMP_BLK,BLK,BlackRock,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_BX,BX,Blackstone Inc.,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_XYZ,XYZ,"Block, Inc.",Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_BE,BE,Bloom Energy,Industrials,Electrical Components & Equipment,NYSE,Large Cap,S&P 500
+CMP_BNY,BNY,BNY Mellon,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_BA,BA,Boeing,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_BKNG,BKNG,Booking Holdings,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_BSX,BSX,Boston Scientific,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_BMY,BMY,Bristol Myers Squibb,Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500
+CMP_AVGO,AVGO,Broadcom,Information Technology,Semiconductors,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_BR,BR,Broadridge Financial Solutions,Industrials,Data Processing & Outsourced Services,NYSE,Large Cap,S&P 500
+CMP_BRO,BRO,Brown & Brown,Financials,Insurance Brokers,NYSE,Large Cap,S&P 500
+CMP_BF-B,BF-B,Brown–Forman,Consumer Staples,Distillers & Vintners,NYSE,Large Cap,S&P 500
+CMP_BG,BG,Bunge Global,Consumer Staples,Agricultural Products & Services,NYSE,Large Cap,S&P 500
+CMP_BXP,BXP,"BXP, Inc.",Real Estate,Office REITs,NYSE,Large Cap,S&P 500
+CMP_CHRW,CHRW,C.H. Robinson,Industrials,Air Freight & Logistics,NYSE,Large Cap,S&P 500
+CMP_CDNS,CDNS,Cadence Design Systems,Information Technology,Application Software,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_CPT,CPT,Camden Property Trust,Real Estate,Multi-Family Residential REITs,NYSE,Large Cap,S&P 500
+CMP_COF,COF,Capital One,Financials,Consumer Finance,NYSE,Large Cap,S&P 500
+CMP_CAH,CAH,Cardinal Health,Health Care,Health Care Distributors,NYSE,Large Cap,S&P 500
+CMP_CCL,CCL,Carnival Corporation,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NYSE,Large Cap,S&P 500
+CMP_CARR,CARR,Carrier Global,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_CVNA,CVNA,Carvana,Consumer Discretionary,Automotive Retail,NYSE,Large Cap,S&P 500; Russell 2000
+CMP_CASY,CASY,Casey's,Consumer Staples,Food Retail,NYSE,Large Cap,S&P 500
+CMP_CAT,CAT,Caterpillar Inc.,Industrials,Construction Machinery & Heavy Transportation Equipment,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_CBOE,CBOE,Cboe Global Markets,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_CBRE,CBRE,CBRE Group,Real Estate,Real Estate Services,NYSE,Large Cap,S&P 500
+CMP_CDW,CDW,CDW Corporation,Information Technology,Technology Distributors,NYSE,Large Cap,S&P 500
+CMP_COR,COR,Cencora,Health Care,Health Care Distributors,NYSE,Large Cap,S&P 500
+CMP_CNC,CNC,Centene Corporation,Health Care,Managed Health Care,NYSE,Large Cap,S&P 500
+CMP_CNP,CNP,CenterPoint Energy,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_CF,CF,CF Industries,Materials,Fertilizers & Agricultural Chemicals,NYSE,Large Cap,S&P 500
+CMP_CRL,CRL,Charles River Laboratories,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_SCHW,SCHW,Charles Schwab Corporation,Financials,Investment Banking & Brokerage,NYSE,Large Cap,S&P 500
+CMP_CHTR,CHTR,Charter Communications,Communication Services,Cable & Satellite,NYSE,Large Cap,S&P 500
+CMP_CVX,CVX,Chevron Corporation,Energy,Integrated Oil & Gas,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_CMG,CMG,Chipotle Mexican Grill,Consumer Discretionary,Restaurants,NYSE,Large Cap,S&P 500
+CMP_CB,CB,Chubb Limited,Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_CHD,CHD,Church & Dwight,Consumer Staples,Household Products,NYSE,Large Cap,S&P 500
+CMP_CIEN,CIEN,Ciena,Information Technology,Communications Equipment,NYSE,Large Cap,S&P 500
+CMP_CI,CI,Cigna,Health Care,Health Care Services,NYSE,Large Cap,S&P 500
+CMP_CINF,CINF,Cincinnati Financial,Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_CTAS,CTAS,Cintas,Industrials,Diversified Support Services,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_CSCO,CSCO,Cisco,Information Technology,Communications Equipment,NASDAQ,Large Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_C,C,Citigroup,Financials,Diversified Banks,NYSE,Large Cap,S&P 500
+CMP_CFG,CFG,Citizens Financial Group,Financials,Regional Banks,NYSE,Large Cap,S&P 500
+CMP_CLX,CLX,Clorox,Consumer Staples,Household Products,NYSE,Large Cap,S&P 500
+CMP_CME,CME,CME Group,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_CMS,CMS,CMS Energy,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_KO,KO,Coca-Cola Company (The),Consumer Staples,Soft Drinks & Non-alcoholic Beverages,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_CTSH,CTSH,Cognizant,Information Technology,IT Consulting & Other Services,NYSE,Large Cap,S&P 500
+CMP_COHR,COHR,Coherent Corp.,Information Technology,Electronic Components,NYSE,Large Cap,S&P 500
+CMP_COIN,COIN,Coinbase,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_CL,CL,Colgate-Palmolive,Consumer Staples,Household Products,NYSE,Large Cap,S&P 500
+CMP_CMCSA,CMCSA,Comcast,Communication Services,Cable & Satellite,NYSE,Large Cap,S&P 500
+CMP_FIX,FIX,Comfort Systems USA,Industrials,Construction & Engineering,NYSE,Large Cap,S&P 500
+CMP_COP,COP,ConocoPhillips,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_ED,ED,Consolidated Edison,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_STZ,STZ,Constellation Brands,Consumer Staples,Distillers & Vintners,NYSE,Large Cap,S&P 500
+CMP_CEG,CEG,Constellation Energy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_COO,COO,Cooper Companies (The),Health Care,Health Care Supplies,NYSE,Large Cap,S&P 500
+CMP_CPRT,CPRT,Copart,Industrials,Diversified Support Services,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_GLW,GLW,Corning Inc.,Information Technology,Electronic Components,NYSE,Large Cap,S&P 500
+CMP_CPAY,CPAY,Corpay,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_CSGP,CSGP,CoStar Group,Real Estate,Real Estate Services,NYSE,Large Cap,S&P 500
+CMP_COST,COST,Costco,Consumer Staples,Consumer Staples Merchandise Retail,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_CRH,CRH,CRH plc,Materials,Construction Materials,NYSE,Large Cap,S&P 500
+CMP_CRWD,CRWD,CrowdStrike,Information Technology,Systems Software,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_CCI,CCI,Crown Castle,Real Estate,Telecom Tower REITs,NYSE,Large Cap,S&P 500
+CMP_CSX,CSX,CSX Corporation,Industrials,Rail Transportation,NYSE,Large Cap,S&P 500
+CMP_CMI,CMI,Cummins,Industrials,Construction Machinery & Heavy Transportation Equipment,NYSE,Large Cap,S&P 500
+CMP_CVS,CVS,CVS Health,Health Care,Health Care Services,NYSE,Large Cap,S&P 500
+CMP_DHR,DHR,Danaher Corporation,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_DRI,DRI,Darden Restaurants,Consumer Discretionary,Restaurants,NYSE,Large Cap,S&P 500
+CMP_DDOG,DDOG,Datadog,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_DVA,DVA,DaVita,Health Care,Health Care Services,NYSE,Large Cap,S&P 500
+CMP_DECK,DECK,Deckers Brands,Consumer Discretionary,Footwear,NYSE,Large Cap,S&P 500
+CMP_DE,DE,Deere & Company,Industrials,Agricultural & Farm Machinery,NYSE,Large Cap,S&P 500
+CMP_DELL,DELL,Dell Technologies,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_DAL,DAL,Delta Air Lines,Industrials,Passenger Airlines,NYSE,Large Cap,S&P 500
+CMP_DVN,DVN,Devon Energy,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_DXCM,DXCM,Dexcom,Health Care,Health Care Equipment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_FANG,FANG,Diamondback Energy,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_DLR,DLR,Digital Realty,Real Estate,Data Center REITs,NYSE,Large Cap,S&P 500
+CMP_DG,DG,Dollar General,Consumer Staples,Consumer Staples Merchandise Retail,NYSE,Large Cap,S&P 500
+CMP_DLTR,DLTR,Dollar Tree,Consumer Staples,Consumer Staples Merchandise Retail,NYSE,Large Cap,S&P 500
+CMP_D,D,Dominion Energy,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_DPZ,DPZ,Domino's,Consumer Discretionary,Restaurants,NYSE,Large Cap,S&P 500
+CMP_DASH,DASH,DoorDash,Consumer Discretionary,Specialized Consumer Services,NYSE,Large Cap,S&P 500
+CMP_DOV,DOV,Dover Corporation,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_DOW,DOW,Dow Inc.,Materials,Commodity Chemicals,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_DHI,DHI,D. R. Horton,Consumer Discretionary,Homebuilding,NYSE,Large Cap,S&P 500
+CMP_DTE,DTE,DTE Energy,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_DUK,DUK,Duke Energy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_DD,DD,DuPont,Industrials,Industrial Conglomerates,NYSE,Large Cap,S&P 500
+CMP_ETN,ETN,Eaton Corporation,Industrials,Electrical Components & Equipment,NYSE,Large Cap,S&P 500
+CMP_EBAY,EBAY,eBay Inc.,Consumer Discretionary,Broadline Retail,NYSE,Large Cap,S&P 500
+CMP_ECHO,ECHO,EchoStar,Communication Services,Wireless Telecommunication Services,NYSE,Large Cap,S&P 500
+CMP_ECL,ECL,Ecolab,Materials,Specialty Chemicals,NYSE,Large Cap,S&P 500
+CMP_EIX,EIX,Edison International,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_EW,EW,Edwards Lifesciences,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_ELV,ELV,Elevance Health,Health Care,Managed Health Care,NYSE,Large Cap,S&P 500
+CMP_EME,EME,Emcor,Industrials,Construction & Engineering,NYSE,Large Cap,S&P 500
+CMP_EMR,EMR,Emerson Electric,Industrials,Electrical Components & Equipment,NYSE,Large Cap,S&P 500
+CMP_ETR,ETR,Entergy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_EOG,EOG,EOG Resources,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_EQT,EQT,EQT Corporation,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_EFX,EFX,Equifax,Industrials,Research & Consulting Services,NYSE,Large Cap,S&P 500
+CMP_EQIX,EQIX,Equinix,Real Estate,Data Center REITs,NYSE,Large Cap,S&P 500
+CMP_ERIE,ERIE,Erie Indemnity,Financials,Insurance Brokers,NYSE,Large Cap,S&P 500
+CMP_ESS,ESS,Essex Property Trust,Real Estate,Multi-Family Residential REITs,NYSE,Large Cap,S&P 500
+CMP_EL,EL,Estée Lauder Companies (The),Consumer Staples,Personal Care Products,NYSE,Large Cap,S&P 500
+CMP_EG,EG,Everest Group,Financials,Reinsurance,NYSE,Large Cap,S&P 500
+CMP_EVRG,EVRG,Evergy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_P,P,Everpure,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_ES,ES,Eversource Energy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_EXC,EXC,Exelon,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_EXE,EXE,Expand Energy,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_EXPE,EXPE,Expedia Group,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NYSE,Large Cap,S&P 500
+CMP_EXPD,EXPD,Expeditors International,Industrials,Air Freight & Logistics,NYSE,Large Cap,S&P 500
+CMP_EXR,EXR,Extra Space Storage,Real Estate,Self-Storage REITs,NYSE,Large Cap,S&P 500
+CMP_XOM,XOM,ExxonMobil,Energy,Integrated Oil & Gas,NYSE,Large Cap,S&P 500
+CMP_FFIV,FFIV,"F5, Inc.",Information Technology,Communications Equipment,NYSE,Large Cap,S&P 500
+CMP_FDS,FDS,FactSet,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_FICO,FICO,Fair Isaac,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_FAST,FAST,Fastenal,Industrials,Trading Companies & Distributors,NYSE,Large Cap,S&P 500
+CMP_FRT,FRT,Federal Realty Investment Trust,Real Estate,Retail REITs,NYSE,Large Cap,S&P 500
+CMP_FDX,FDX,FedEx,Industrials,Air Freight & Logistics,NYSE,Large Cap,S&P 500
+CMP_FDXF,FDXF,FedEx Freight,Industrials,Cargo Ground Transportation,NYSE,Large Cap,S&P 500
+CMP_FERG,FERG,Ferguson Enterprises,Industrials,Trading Companies & Distributors,NYSE,Large Cap,S&P 500
+CMP_FIS,FIS,Fidelity National Information Services,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_FITB,FITB,Fifth Third Bancorp,Financials,Regional Banks,NYSE,Large Cap,S&P 500
+CMP_FSLR,FSLR,First Solar,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_FE,FE,FirstEnergy,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_FISV,FISV,Fiserv,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_FLEX,FLEX,Flex Ltd.,Information Technology,Electronic Manufacturing Services,NYSE,Large Cap,S&P 500
+CMP_F,F,Ford Motor Company,Consumer Discretionary,Automobile Manufacturers,NYSE,Large Cap,S&P 500
+CMP_FTNT,FTNT,Fortinet,Information Technology,Systems Software,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_FTV,FTV,Fortive,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_FOXA,FOXA,Fox Corporation (Class A),Communication Services,Broadcasting,NYSE,Large Cap,S&P 500
+CMP_FOX,FOX,Fox Corporation (Class B),Communication Services,Broadcasting,NYSE,Large Cap,S&P 500
+CMP_BEN,BEN,Franklin Resources,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_FCX,FCX,Freeport-McMoRan,Materials,Copper,NYSE,Large Cap,S&P 500
+CMP_GRMN,GRMN,Garmin,Consumer Discretionary,Consumer Electronics,NYSE,Large Cap,S&P 500
+CMP_IT,IT,Gartner,Information Technology,IT Consulting & Other Services,NYSE,Large Cap,S&P 500
+CMP_GE,GE,GE Aerospace,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_GEHC,GEHC,GE HealthCare,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_GEV,GEV,GE Vernova,Industrials,Heavy Electrical Equipment,NYSE,Large Cap,S&P 500
+CMP_GEN,GEN,Gen Digital,Information Technology,Systems Software,NYSE,Large Cap,S&P 500
+CMP_GNRC,GNRC,Generac,Industrials,Heavy Electrical Equipment,NYSE,Large Cap,S&P 500
+CMP_GD,GD,General Dynamics,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_GIS,GIS,General Mills,Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_GM,GM,General Motors,Consumer Discretionary,Automobile Manufacturers,NYSE,Large Cap,S&P 500
+CMP_GPC,GPC,Genuine Parts Company,Consumer Discretionary,Distributors,NYSE,Large Cap,S&P 500
+CMP_GILD,GILD,Gilead Sciences,Health Care,Biotechnology,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_GPN,GPN,Global Payments,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_GL,GL,Globe Life,Financials,Life & Health Insurance,NYSE,Large Cap,S&P 500
+CMP_GDDY,GDDY,GoDaddy,Information Technology,Internet Services & Infrastructure,NYSE,Large Cap,S&P 500
+CMP_GS,GS,Goldman Sachs,Financials,Investment Banking & Brokerage,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_HAL,HAL,Halliburton,Energy,Oil & Gas Equipment & Services,NYSE,Large Cap,S&P 500
+CMP_HIG,HIG,Hartford (The),Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_HAS,HAS,Hasbro,Consumer Discretionary,Leisure Products,NYSE,Large Cap,S&P 500
+CMP_HCA,HCA,HCA Healthcare,Health Care,Health Care Facilities,NYSE,Large Cap,S&P 500
+CMP_DOC,DOC,Healthpeak Properties,Real Estate,Health Care REITs,NYSE,Large Cap,S&P 500
+CMP_HSIC,HSIC,Henry Schein,Health Care,Health Care Distributors,NYSE,Large Cap,S&P 500
+CMP_HSY,HSY,Hershey Company (The),Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_HPE,HPE,Hewlett Packard Enterprise,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_HLT,HLT,Hilton Worldwide,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NYSE,Large Cap,S&P 500
+CMP_HD,HD,Home Depot (The),Consumer Discretionary,Home Improvement Retail,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_HONA,HONA,Honeywell Aerospace,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_HON,HON,Honeywell Technologies,Industrials,Industrial Conglomerates,NASDAQ,Large Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_HRL,HRL,Hormel Foods,Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_HST,HST,Host Hotels & Resorts,Real Estate,Hotel & Resort REITs,NYSE,Large Cap,S&P 500
+CMP_HWM,HWM,Howmet Aerospace,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_HPQ,HPQ,HP Inc.,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_HUBB,HUBB,Hubbell Incorporated,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_HUM,HUM,Humana,Health Care,Managed Health Care,NYSE,Large Cap,S&P 500
+CMP_HBAN,HBAN,Huntington Bancshares,Financials,Regional Banks,NYSE,Large Cap,S&P 500
+CMP_HII,HII,Huntington Ingalls Industries,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_IBM,IBM,IBM,Information Technology,IT Consulting & Other Services,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_IEX,IEX,IDEX Corporation,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_IDXX,IDXX,Idexx Laboratories,Health Care,Health Care Equipment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_ITW,ITW,Illinois Tool Works,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_ILMN,ILMN,"Illumina, Inc.",Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_INCY,INCY,Incyte,Health Care,Biotechnology,NYSE,Large Cap,S&P 500
+CMP_IR,IR,Ingersoll Rand,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_PODD,PODD,Insulet Corporation,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_INTC,INTC,Intel,Information Technology,Semiconductors,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_IBKR,IBKR,Interactive Brokers,Financials,Investment Banking & Brokerage,NYSE,Large Cap,S&P 500
+CMP_ICE,ICE,Intercontinental Exchange,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_IFF,IFF,International Flavors & Fragrances,Materials,Specialty Chemicals,NYSE,Large Cap,S&P 500
+CMP_IP,IP,International Paper,Materials,Paper & Plastic Packaging Products & Materials,NYSE,Large Cap,S&P 500
+CMP_INTU,INTU,Intuit,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_ISRG,ISRG,Intuitive Surgical,Health Care,Health Care Equipment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_IVZ,IVZ,Invesco,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_INVH,INVH,Invitation Homes,Real Estate,Single-Family Residential REITs,NYSE,Large Cap,S&P 500
+CMP_IQV,IQV,IQVIA,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_IRM,IRM,Iron Mountain,Real Estate,Other Specialized REITs,NYSE,Large Cap,S&P 500
+CMP_JBHT,JBHT,J.B. Hunt,Industrials,Cargo Ground Transportation,NYSE,Large Cap,S&P 500
+CMP_JBL,JBL,Jabil,Information Technology,Electronic Manufacturing Services,NYSE,Large Cap,S&P 500
+CMP_JKHY,JKHY,Jack Henry & Associates,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_J,J,Jacobs Solutions,Industrials,Construction & Engineering,NYSE,Large Cap,S&P 500
+CMP_JNJ,JNJ,Johnson & Johnson,Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_JCI,JCI,Johnson Controls,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_JPM,JPM,JPMorgan Chase,Financials,Diversified Banks,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_KDP,KDP,Keurig Dr Pepper,Consumer Staples,Soft Drinks & Non-alcoholic Beverages,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_KEY,KEY,KeyCorp,Financials,Regional Banks,NYSE,Large Cap,S&P 500
+CMP_KEYS,KEYS,Keysight Technologies,Information Technology,Electronic Equipment & Instruments,NYSE,Large Cap,S&P 500
+CMP_KMB,KMB,Kimberly-Clark,Consumer Staples,Household Products,NYSE,Large Cap,S&P 500
+CMP_KIM,KIM,Kimco Realty,Real Estate,Retail REITs,NYSE,Large Cap,S&P 500
+CMP_KMI,KMI,Kinder Morgan,Energy,Oil & Gas Storage & Transportation,NYSE,Large Cap,S&P 500
+CMP_KKR,KKR,KKR & Co.,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_KLAC,KLAC,KLA Corporation,Information Technology,Semiconductor Materials & Equipment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_KHC,KHC,Kraft Heinz,Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_KR,KR,Kroger,Consumer Staples,Food Retail,NYSE,Large Cap,S&P 500
+CMP_LHX,LHX,L3Harris,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_LH,LH,Labcorp,Health Care,Health Care Services,NYSE,Large Cap,S&P 500
+CMP_LRCX,LRCX,Lam Research,Information Technology,Semiconductor Materials & Equipment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_LVS,LVS,Las Vegas Sands,Consumer Discretionary,Casinos & Gaming,NYSE,Large Cap,S&P 500
+CMP_LDOS,LDOS,Leidos,Industrials,Diversified Support Services,NYSE,Large Cap,S&P 500
+CMP_LEN,LEN,Lennar,Consumer Discretionary,Homebuilding,NYSE,Large Cap,S&P 500
+CMP_LII,LII,Lennox International,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_LLY,LLY,Lilly (Eli),Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500
+CMP_LIN,LIN,Linde plc,Materials,Industrial Gases,NYSE,Large Cap,S&P 500
+CMP_LYV,LYV,Live Nation Entertainment,Communication Services,Movies & Entertainment,NYSE,Large Cap,S&P 500
+CMP_LMT,LMT,Lockheed Martin,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_L,L,Loews Corporation,Financials,Multi-line Insurance,NYSE,Large Cap,S&P 500
+CMP_LOW,LOW,Lowe's,Consumer Discretionary,Home Improvement Retail,NYSE,Large Cap,S&P 500
+CMP_LULU,LULU,Lululemon Athletica,Consumer Discretionary,"Apparel, Accessories & Luxury Goods",NYSE,Large Cap,S&P 500
+CMP_LITE,LITE,Lumentum,Information Technology,Communications Equipment,NYSE,Large Cap,S&P 500
+CMP_LYB,LYB,LyondellBasell,Materials,Specialty Chemicals,NYSE,Large Cap,S&P 500
+CMP_MTB,MTB,M&T Bank,Financials,Regional Banks,NYSE,Large Cap,S&P 500
+CMP_MPC,MPC,Marathon Petroleum,Energy,Oil & Gas Refining & Marketing,NYSE,Large Cap,S&P 500
+CMP_MAR,MAR,Marriott International,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_MRSH,MRSH,Marsh McLennan,Financials,Insurance Brokers,NYSE,Large Cap,S&P 500
+CMP_MLM,MLM,Martin Marietta Materials,Materials,Construction Materials,NYSE,Large Cap,S&P 500
+CMP_MRVL,MRVL,Marvell Technology,Information Technology,Semiconductors,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_MAS,MAS,Masco,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_MA,MA,Mastercard,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_MKC,MKC,McCormick & Company,Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_MCD,MCD,McDonald's,Consumer Discretionary,Restaurants,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_MCK,MCK,McKesson,Health Care,Health Care Distributors,NYSE,Large Cap,S&P 500
+CMP_MDT,MDT,Medtronic,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_MRK,MRK,Merck & Co.,Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_META,META,Meta Platforms,Communication Services,Interactive Media & Services,NASDAQ,Mega Cap,S&P 500; NASDAQ Composite
+CMP_MET,MET,MetLife,Financials,Life & Health Insurance,NYSE,Large Cap,S&P 500
+CMP_MTD,MTD,Mettler Toledo,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_MGM,MGM,MGM Resorts,Consumer Discretionary,Casinos & Gaming,NYSE,Large Cap,S&P 500
+CMP_MCHP,MCHP,Microchip Technology,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_MU,MU,Micron Technology,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_MSFT,MSFT,Microsoft,Information Technology,Systems Software,NASDAQ,Mega Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_MAA,MAA,Mid-America Apartment Communities,Real Estate,Multi-Family Residential REITs,NYSE,Large Cap,S&P 500
+CMP_MRNA,MRNA,Moderna,Health Care,Biotechnology,NYSE,Large Cap,S&P 500
+CMP_MDLZ,MDLZ,Mondelez International,Consumer Staples,Packaged Foods & Meats,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_MPWR,MPWR,Monolithic Power Systems,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_MNST,MNST,Monster Beverage,Consumer Staples,Soft Drinks & Non-alcoholic Beverages,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_MCO,MCO,Moody's Corporation,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_MS,MS,Morgan Stanley,Financials,Investment Banking & Brokerage,NYSE,Large Cap,S&P 500
+CMP_MOS,MOS,Mosaic Company (The),Materials,Fertilizers & Agricultural Chemicals,NYSE,Large Cap,S&P 500
+CMP_MSI,MSI,Motorola Solutions,Information Technology,Communications Equipment,NYSE,Large Cap,S&P 500
+CMP_MSCI,MSCI,MSCI,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_NDAQ,NDAQ,"Nasdaq, Inc.",Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_NTAP,NTAP,NetApp,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_NFLX,NFLX,Netflix,Communication Services,Movies & Entertainment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_NEM,NEM,Newmont,Materials,Gold,NYSE,Large Cap,S&P 500
+CMP_NWSA,NWSA,News Corp (Class A),Communication Services,Publishing,NYSE,Large Cap,S&P 500
+CMP_NWS,NWS,News Corp (Class B),Communication Services,Publishing,NYSE,Large Cap,S&P 500
+CMP_NEE,NEE,NextEra Energy,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_NKE,NKE,"Nike, Inc.",Consumer Discretionary,"Apparel, Accessories & Luxury Goods",NYSE,Large Cap,S&P 500; Dow Jones
+CMP_NI,NI,NiSource,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_NDSN,NDSN,Nordson Corporation,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_NSC,NSC,Norfolk Southern,Industrials,Rail Transportation,NYSE,Large Cap,S&P 500
+CMP_NTRS,NTRS,Northern Trust,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_NOC,NOC,Northrop Grumman,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_NCLH,NCLH,Norwegian Cruise Line Holdings,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NYSE,Large Cap,S&P 500
+CMP_NRG,NRG,NRG Energy,Utilities,Independent Power Producers & Energy Traders,NYSE,Large Cap,S&P 500
+CMP_NUE,NUE,Nucor,Materials,Steel,NYSE,Large Cap,S&P 500
+CMP_NVDA,NVDA,Nvidia,Information Technology,Semiconductors,NASDAQ,Mega Cap,S&P 500; Dow Jones; NASDAQ Composite
+CMP_NVR,NVR,"NVR, Inc.",Consumer Discretionary,Homebuilding,NYSE,Large Cap,S&P 500
+CMP_NXPI,NXPI,NXP Semiconductors,Information Technology,Semiconductors,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_ORLY,ORLY,O'Reilly Automotive,Consumer Discretionary,Automotive Retail,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_OXY,OXY,Occidental Petroleum,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_OKTA,OKTA,"Okta, Inc.",Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_ODFL,ODFL,Old Dominion,Industrials,Cargo Ground Transportation,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_OMC,OMC,Omnicom Group,Communication Services,Advertising,NYSE,Large Cap,S&P 500
+CMP_ON,ON,ON Semiconductor,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_OKE,OKE,Oneok,Energy,Oil & Gas Storage & Transportation,NYSE,Large Cap,S&P 500
+CMP_ORCL,ORCL,Oracle Corporation,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_OTIS,OTIS,Otis Worldwide,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_PCAR,PCAR,Paccar,Industrials,Construction Machinery & Heavy Transportation Equipment,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_PKG,PKG,Packaging Corporation of America,Materials,Paper & Plastic Packaging Products & Materials,NYSE,Large Cap,S&P 500
+CMP_PLTR,PLTR,Palantir Technologies,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_PANW,PANW,Palo Alto Networks,Information Technology,Systems Software,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_PH,PH,Parker Hannifin,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_PAYX,PAYX,Paychex,Industrials,Human Resource & Employment Services,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_PYPL,PYPL,PayPal,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500
+CMP_PNR,PNR,Pentair,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_PEP,PEP,PepsiCo,Consumer Staples,Soft Drinks & Non-alcoholic Beverages,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_PFE,PFE,Pfizer,Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500
+CMP_PCG,PCG,PG&E Corporation,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_PM,PM,Philip Morris International,Consumer Staples,Tobacco,NYSE,Large Cap,S&P 500
+CMP_PSX,PSX,Phillips 66,Energy,Oil & Gas Refining & Marketing,NYSE,Large Cap,S&P 500
+CMP_PNW,PNW,Pinnacle West Capital,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_PNC,PNC,PNC Financial Services,Financials,Diversified Banks,NYSE,Large Cap,S&P 500
+CMP_PPG,PPG,PPG Industries,Materials,Specialty Chemicals,NYSE,Large Cap,S&P 500
+CMP_PPL,PPL,PPL Corporation,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_PFG,PFG,Principal Financial Group,Financials,Life & Health Insurance,NYSE,Large Cap,S&P 500
+CMP_PG,PG,Procter & Gamble,Consumer Staples,Personal Care Products,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_PGR,PGR,Progressive Corporation,Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_PLD,PLD,Prologis,Real Estate,Industrial REITs,NYSE,Large Cap,S&P 500
+CMP_PRU,PRU,Prudential Financial,Financials,Life & Health Insurance,NYSE,Large Cap,S&P 500
+CMP_PTC,PTC,PTC Inc.,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_PEG,PEG,Public Service Enterprise Group,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_PSA,PSA,Public Storage,Real Estate,Self-Storage REITs,NYSE,Large Cap,S&P 500
+CMP_PHM,PHM,PulteGroup,Consumer Discretionary,Homebuilding,NYSE,Large Cap,S&P 500
+CMP_Q,Q,Qnity Electronics,Information Technology,Semiconductor Materials & Equipment,NYSE,Large Cap,S&P 500
+CMP_QCOM,QCOM,Qualcomm,Information Technology,Semiconductors,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_PWR,PWR,Quanta Services,Industrials,Construction & Engineering,NYSE,Large Cap,S&P 500
+CMP_DGX,DGX,Quest Diagnostics,Health Care,Health Care Services,NYSE,Large Cap,S&P 500
+CMP_RL,RL,Ralph Lauren Corporation,Consumer Discretionary,"Apparel, Accessories & Luxury Goods",NYSE,Large Cap,S&P 500
+CMP_RJF,RJF,Raymond James Financial,Financials,Investment Banking & Brokerage,NYSE,Large Cap,S&P 500
+CMP_RDDT,RDDT,Reddit,Communication Services,Interactive Media & Services,NYSE,Large Cap,S&P 500
+CMP_O,O,Realty Income,Real Estate,Retail REITs,NYSE,Large Cap,S&P 500
+CMP_REG,REG,Regency Centers,Real Estate,Retail REITs,NYSE,Large Cap,S&P 500
+CMP_REGN,REGN,Regeneron Pharmaceuticals,Health Care,Biotechnology,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_RF,RF,Regions Financial Corporation,Financials,Regional Banks,NYSE,Large Cap,S&P 500
+CMP_RSG,RSG,Republic Services,Industrials,Environmental & Facilities Services,NYSE,Large Cap,S&P 500
+CMP_RMD,RMD,ResMed,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_RVTY,RVTY,Revvity,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_HOOD,HOOD,Robinhood Markets,Financials,Investment Banking & Brokerage,NYSE,Large Cap,S&P 500
+CMP_ROK,ROK,Rockwell Automation,Industrials,Electrical Components & Equipment,NYSE,Large Cap,S&P 500
+CMP_ROL,ROL,"Rollins, Inc.",Industrials,Environmental & Facilities Services,NYSE,Large Cap,S&P 500
+CMP_ROP,ROP,Roper Technologies,Information Technology,Electronic Equipment & Instruments,NYSE,Large Cap,S&P 500
+CMP_ROST,ROST,Ross Stores,Consumer Discretionary,Apparel Retail,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_RCL,RCL,Royal Caribbean Group,Consumer Discretionary,"Hotels, Resorts & Cruise Lines",NYSE,Large Cap,S&P 500
+CMP_RTX,RTX,RTX Corporation,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_SPGI,SPGI,S&P Global,Financials,Financial Exchanges & Data,NYSE,Large Cap,S&P 500
+CMP_CRM,CRM,Salesforce,Information Technology,Application Software,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_SNDK,SNDK,Sandisk,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_SBAC,SBAC,SBA Communications,Real Estate,Telecom Tower REITs,NYSE,Large Cap,S&P 500
+CMP_SLB,SLB,Schlumberger,Energy,Oil & Gas Equipment & Services,NYSE,Large Cap,S&P 500
+CMP_STX,STX,Seagate Technology,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_SRE,SRE,Sempra,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_NOW,NOW,ServiceNow,Information Technology,Systems Software,NYSE,Large Cap,S&P 500
+CMP_SHW,SHW,Sherwin-Williams,Materials,Specialty Chemicals,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_SPG,SPG,Simon Property Group,Real Estate,Retail REITs,NYSE,Large Cap,S&P 500
+CMP_SKYD,SKYD,Skydance,Communication Services,Movies & Entertainment,NYSE,Large Cap,S&P 500
+CMP_SWKS,SWKS,Skyworks Solutions,Information Technology,Semiconductors,NYSE,Large Cap,S&P 500
+CMP_SJM,SJM,J.M. Smucker Company (The),Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_SW,SW,Smurfit Westrock,Materials,Paper & Plastic Packaging Products & Materials,NYSE,Large Cap,S&P 500
+CMP_SNA,SNA,Snap-on,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_SOLV,SOLV,Solventum,Health Care,Health Care Technology,NYSE,Large Cap,S&P 500
+CMP_SO,SO,Southern Company,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_LUV,LUV,Southwest Airlines,Industrials,Passenger Airlines,NYSE,Large Cap,S&P 500
+CMP_SWK,SWK,Stanley Black & Decker,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_SBUX,SBUX,Starbucks,Consumer Discretionary,Restaurants,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_STT,STT,State Street Corporation,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_STLD,STLD,Steel Dynamics,Materials,Steel,NYSE,Large Cap,S&P 500
+CMP_STE,STE,Steris,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_SYK,SYK,Stryker Corporation,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_SMCI,SMCI,Supermicro,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500; Russell 2000
+CMP_SYF,SYF,Synchrony Financial,Financials,Consumer Finance,NYSE,Large Cap,S&P 500
+CMP_SNPS,SNPS,Synopsys,Information Technology,Application Software,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_SYY,SYY,Sysco,Consumer Staples,Food Distributors,NYSE,Large Cap,S&P 500
+CMP_TMUS,TMUS,T-Mobile US,Communication Services,Wireless Telecommunication Services,NYSE,Large Cap,S&P 500
+CMP_TROW,TROW,T. Rowe Price,Financials,Asset Management & Custody Banks,NYSE,Large Cap,S&P 500
+CMP_TTWO,TTWO,Take-Two Interactive,Communication Services,Interactive Home Entertainment,NYSE,Large Cap,S&P 500
+CMP_TPR,TPR,"Tapestry, Inc.",Consumer Discretionary,"Apparel, Accessories & Luxury Goods",NYSE,Large Cap,S&P 500
+CMP_TRGP,TRGP,Targa Resources,Energy,Oil & Gas Storage & Transportation,NYSE,Large Cap,S&P 500
+CMP_TGT,TGT,Target Corporation,Consumer Staples,Consumer Staples Merchandise Retail,NYSE,Large Cap,S&P 500
+CMP_TEL,TEL,TE Connectivity,Information Technology,Electronic Manufacturing Services,NYSE,Large Cap,S&P 500
+CMP_TDY,TDY,Teledyne Technologies,Information Technology,Electronic Equipment & Instruments,NYSE,Large Cap,S&P 500
+CMP_TER,TER,Teradyne,Information Technology,Semiconductor Materials & Equipment,NYSE,Large Cap,S&P 500
+CMP_TSLA,TSLA,"Tesla, Inc.",Consumer Discretionary,Automobile Manufacturers,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_TXN,TXN,Texas Instruments,Information Technology,Semiconductors,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_TPL,TPL,Texas Pacific Land Corporation,Energy,Oil & Gas Exploration & Production,NYSE,Large Cap,S&P 500
+CMP_TXT,TXT,Textron,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_TMO,TMO,Thermo Fisher Scientific,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_TJX,TJX,TJX Companies,Consumer Discretionary,Apparel Retail,NYSE,Large Cap,S&P 500
+CMP_TKO,TKO,TKO Group Holdings,Communication Services,Movies & Entertainment,NYSE,Large Cap,S&P 500
+CMP_TSCO,TSCO,Tractor Supply,Consumer Discretionary,Other Specialty Retail,NYSE,Large Cap,S&P 500
+CMP_TT,TT,Trane Technologies,Industrials,Building Products,NYSE,Large Cap,S&P 500
+CMP_TDG,TDG,TransDigm Group,Industrials,Aerospace & Defense,NYSE,Large Cap,S&P 500
+CMP_TRV,TRV,Travelers Companies (The),Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_TRMB,TRMB,Trimble Inc.,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_TFC,TFC,Truist Financial,Financials,Diversified Banks,NYSE,Large Cap,S&P 500
+CMP_TWLO,TWLO,Twilio,Information Technology,Systems Software,NYSE,Large Cap,S&P 500
+CMP_TYL,TYL,Tyler Technologies,Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_TSN,TSN,Tyson Foods,Consumer Staples,Packaged Foods & Meats,NYSE,Large Cap,S&P 500
+CMP_USB,USB,U.S. Bancorp,Financials,Diversified Banks,NYSE,Large Cap,S&P 500
+CMP_UBER,UBER,Uber,Industrials,Passenger Ground Transportation,NYSE,Large Cap,S&P 500
+CMP_UDR,UDR,"UDR, Inc.",Real Estate,Multi-Family Residential REITs,NYSE,Large Cap,S&P 500
+CMP_ULTA,ULTA,Ulta Beauty,Consumer Discretionary,Other Specialty Retail,NYSE,Large Cap,S&P 500
+CMP_UNP,UNP,Union Pacific Corporation,Industrials,Rail Transportation,NYSE,Large Cap,S&P 500
+CMP_UAL,UAL,United Airlines Holdings,Industrials,Passenger Airlines,NYSE,Large Cap,S&P 500
+CMP_UPS,UPS,United Parcel Service,Industrials,Air Freight & Logistics,NYSE,Large Cap,S&P 500
+CMP_URI,URI,United Rentals,Industrials,Trading Companies & Distributors,NYSE,Large Cap,S&P 500
+CMP_UNH,UNH,UnitedHealth Group,Health Care,Managed Health Care,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_UHS,UHS,Universal Health Services,Health Care,Health Care Facilities,NYSE,Large Cap,S&P 500
+CMP_VLO,VLO,Valero Energy,Energy,Oil & Gas Refining & Marketing,NYSE,Large Cap,S&P 500
+CMP_VEEV,VEEV,Veeva Systems,Health Care,Health Care Technology,NYSE,Large Cap,S&P 500
+CMP_VTR,VTR,Ventas,Real Estate,Health Care REITs,NYSE,Large Cap,S&P 500
+CMP_VLTO,VLTO,Veralto,Industrials,Environmental & Facilities Services,NYSE,Large Cap,S&P 500
+CMP_VRSN,VRSN,Verisign,Information Technology,Internet Services & Infrastructure,NYSE,Large Cap,S&P 500
+CMP_VRSK,VRSK,Verisk Analytics,Industrials,Research & Consulting Services,NYSE,Large Cap,S&P 500
+CMP_VZ,VZ,Verizon,Communication Services,Integrated Telecommunication Services,NYSE,Large Cap,S&P 500
+CMP_VRTX,VRTX,Vertex Pharmaceuticals,Health Care,Biotechnology,NASDAQ,Large Cap,S&P 500; NASDAQ Composite
+CMP_VRT,VRT,Vertiv,Industrials,Electrical Components & Equipment,NYSE,Large Cap,S&P 500
+CMP_VTRS,VTRS,Viatris,Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500
+CMP_VICI,VICI,Vici Properties,Real Estate,Hotel & Resort REITs,NYSE,Large Cap,S&P 500
+CMP_V,V,Visa Inc.,Financials,Transaction & Payment Processing Services,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_VST,VST,Vistra Corp.,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_VMRK,VMRK,Vivmark Residential,Real Estate,Multi-Family Residential REITs,NYSE,Large Cap,S&P 500
+CMP_VMC,VMC,Vulcan Materials Company,Materials,Construction Materials,NYSE,Large Cap,S&P 500
+CMP_VYLR,VYLR,Vylor,Consumer Staples,Agricultural Products & Services,NYSE,Large Cap,S&P 500
+CMP_WRB,WRB,W. R. Berkley Corporation,Financials,Property & Casualty Insurance,NYSE,Large Cap,S&P 500
+CMP_GWW,GWW,W. W. Grainger,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_WAB,WAB,Wabtec,Industrials,Construction Machinery & Heavy Transportation Equipment,NYSE,Large Cap,S&P 500
+CMP_WMT,WMT,Walmart,Consumer Staples,Consumer Staples Merchandise Retail,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_DIS,DIS,Walt Disney Company (The),Communication Services,Movies & Entertainment,NYSE,Large Cap,S&P 500; Dow Jones
+CMP_WM,WM,Waste Management,Industrials,Environmental & Facilities Services,NYSE,Large Cap,S&P 500
+CMP_WAT,WAT,Waters Corporation,Health Care,Life Sciences Tools & Services,NYSE,Large Cap,S&P 500
+CMP_WEC,WEC,WEC Energy Group,Utilities,Electric Utilities,NYSE,Large Cap,S&P 500
+CMP_WFC,WFC,Wells Fargo,Financials,Diversified Banks,NYSE,Large Cap,S&P 500
+CMP_WELL,WELL,Welltower,Real Estate,Health Care REITs,NYSE,Large Cap,S&P 500
+CMP_WST,WST,West Pharmaceutical Services,Health Care,Health Care Supplies,NYSE,Large Cap,S&P 500
+CMP_WDC,WDC,Western Digital,Information Technology,"Technology Hardware, Storage & Peripherals",NYSE,Large Cap,S&P 500
+CMP_WY,WY,Weyerhaeuser,Real Estate,Timber REITs,NYSE,Large Cap,S&P 500
+CMP_WSM,WSM,"Williams-Sonoma, Inc.",Consumer Discretionary,Homefurnishing Retail,NYSE,Large Cap,S&P 500
+CMP_WMB,WMB,Williams Companies,Energy,Oil & Gas Storage & Transportation,NYSE,Large Cap,S&P 500
+CMP_WTW,WTW,Willis Towers Watson,Financials,Insurance Brokers,NYSE,Large Cap,S&P 500
+CMP_WDAY,WDAY,"Workday, Inc.",Information Technology,Application Software,NYSE,Large Cap,S&P 500
+CMP_WYNN,WYNN,Wynn Resorts,Consumer Discretionary,Casinos & Gaming,NYSE,Large Cap,S&P 500
+CMP_XEL,XEL,Xcel Energy,Utilities,Multi-Utilities,NYSE,Large Cap,S&P 500
+CMP_XYL,XYL,Xylem Inc.,Industrials,Industrial Machinery & Supplies & Components,NYSE,Large Cap,S&P 500
+CMP_YUM,YUM,Yum! Brands,Consumer Discretionary,Restaurants,NYSE,Large Cap,S&P 500
+CMP_ZBRA,ZBRA,Zebra Technologies,Information Technology,Electronic Equipment & Instruments,NYSE,Large Cap,S&P 500
+CMP_ZBH,ZBH,Zimmer Biomet,Health Care,Health Care Equipment,NYSE,Large Cap,S&P 500
+CMP_ZTS,ZTS,Zoetis,Health Care,Pharmaceuticals,NYSE,Large Cap,S&P 500
+CMP_WBA,WBA,WBA Corp (Historical),Diversified,Industrial Conglomerate,NYSE,Large Cap,Dow Jones (Historical)
+CMP_RIOT,RIOT,RIOT Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_RKLB,RKLB,RKLB Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_SOFI,SOFI,SOFI Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_CROX,CROX,CROX Inc,Consumer Discretionary,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_AFRM,AFRM,AFRM Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_UPST,UPST,UPST Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_PLUG,PLUG,PLUG Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_DKNG,DKNG,DKNG Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_GME,GME,GME Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_AMC,AMC,AMC Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_CELH,CELH,CELH Inc,Consumer Discretionary,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_DUOL,DUOL,DUOL Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_MSTR,MSTR,MSTR Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_MARA,MARA,MARA Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_ELF,ELF,ELF Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_IONQ,IONQ,IONQ Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_FN,FN,FN Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
+CMP_CHPT,CHPT,CHPT Inc,Technology,Consumer & Tech Products,NASDAQ,Small Cap,Russell 2000
