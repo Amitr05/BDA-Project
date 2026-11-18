@@ -1,10 +1,10 @@
 {
-  "timestamp_utc": "2026-11-17T18:43:05.580428+00:00",
+  "timestamp_utc": "2026-11-18T18:29:36.255654+00:00",
   "api_key_used": false,
   "total_series": 12,
   "successful_series": 12,
-  "skipped_from_cache": 0,
-  "newly_downloaded": 12,
+  "skipped_from_cache": 12,
+  "newly_downloaded": 0,
   "failed_series": {},
   "series_details": {
     "CPIAUCSL": {

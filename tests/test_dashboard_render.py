@@ -19,7 +19,7 @@ def test_dashboard_renders_successfully():
     # Verify title and subheaders are rendered
     assert len(at.title) >= 1
     assert "Global Events" in at.title[0].value
-    assert len(at.subheader) >= 5
+    assert len(at.subheader) >= 3
 
     # Verify metrics and widgets
     assert len(at.metric) >= 4

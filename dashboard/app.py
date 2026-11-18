@@ -376,6 +376,36 @@ def get_available_companies_for_index(index_key: str) -> pd.DataFrame:
     return comp_df[comp_df["ticker"].isin(avail_tickers)].sort_values("company_name").reset_index(drop=True)
 
 
+def _match_event_subset(df: Optional[pd.DataFrame], ev_name: str, ev_date_str: str) -> pd.DataFrame:
+    """Safely match and filter an event subset across datasets with varying naming conventions."""
+    if df is None or df.empty:
+        return pd.DataFrame()
+
+    # 1. Exact event_name match
+    if "event_name" in df.columns:
+        sub = df[df["event_name"] == ev_name]
+        if not sub.empty:
+            return sub
+
+    # 2. Date-based match (effective_trading_date, event_date, calendar_event_date)
+    for d_col in ["effective_trading_date", "event_date", "calendar_event_date"]:
+        if d_col in df.columns:
+            sub = df[pd.to_datetime(df[d_col], errors="coerce").dt.strftime("%Y-%m-%d") == ev_date_str]
+            if not sub.empty:
+                return sub
+
+    # 3. Canonical key / normalized title match
+    if "event_name" in df.columns:
+        norm_ev = ev_name.lower().replace("–", "-")
+        for key in ["russia-ukraine", "brexit", "covid", "banking crisis", "svb", "trade war", "gaza", "israel-hamas", "yen carry"]:
+            if key in norm_ev:
+                sub = df[df["event_name"].str.lower().str.replace("–", "-").str.contains(key, na=False)]
+                if not sub.empty:
+                    return sub
+
+    return pd.DataFrame()
+
+
 def _format_num(val: Any, suffix: str = "", digits: int = 2) -> str:
     if pd.isna(val) or val is None:
         return "N/A"
@@ -491,9 +521,9 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
 
     st.markdown("---")
 
-    # 3. Historical Price Movement
+    # 1. Historical Price Movement
     sec_title = f"{comp_meta.get('company_name', sel_ticker)} ({sel_ticker})" if sel_ticker else idx_cfg["label"]
-    st.write(f"### 3. Historical Stock Price Movements: {sec_title}")
+    st.write(f"### 1. Historical Stock Price Movements: {sec_title}")
 
     active_plot_df = comp_df if comp_df is not None else idx_df
     price_fig = go.Figure()
@@ -513,11 +543,11 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
     )
     st.plotly_chart(price_fig, use_container_width=True)
 
-    # 4. Daily Returns and 5. Volatility Side by Side
+    # 2. Daily Returns and 3. Volatility Side by Side
     col_ret, col_vol = st.columns(2)
 
     with col_ret:
-        st.write("### 4. Daily Returns & Distribution")
+        st.write("### 2. Daily Returns & Distribution")
         ret_series = active_plot_df["daily_return_pct"].dropna()
 
         # Daily bar chart
@@ -545,7 +575,7 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
         st.plotly_chart(hist_fig, use_container_width=True)
 
     with col_vol:
-        st.write("### 5. Annualized Volatility Dynamics")
+        st.write("### 3. Annualized Volatility Dynamics")
         vol_col = "rolling_vol_21d" if "rolling_vol_21d" in active_plot_df.columns else "rolling_volatility_21d"
         vol_fig = go.Figure()
         if vol_col in active_plot_df.columns:
@@ -560,8 +590,8 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
         vol_fig.update_layout(title=f"{sec_title} - 21-Day Rolling Volatility (% p.a.)", height=320, hovermode="x unified")
         st.plotly_chart(vol_fig, use_container_width=True)
 
-        # 9. VIX Movements in Market Context
-        st.write("### 9. CBOE Volatility Index (VIX) Movements")
+        # 4. VIX Movements in Market Context
+        st.write("### 4. CBOE Volatility Index (VIX) Movements")
         vix_sub = vix_df[(vix_df["Date"] >= active_plot_df["Date"].min()) & (vix_df["Date"] <= active_plot_df["Date"].max())]
         vix_fig = go.Figure()
         vix_fig.add_trace(go.Scatter(
@@ -576,10 +606,10 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
         vix_fig.update_layout(title="CBOE Volatility Index (VIX) Over Period", height=280, hovermode="x unified")
         st.plotly_chart(vix_fig, use_container_width=True)
 
-    # 6. Compare Company Performance with Parent Index
+    # 5. Compare Company Performance with Parent Index
     if comp_df is not None and not comp_df.empty:
         st.markdown("---")
-        st.write(f"### 6. Company Performance vs Parent Index ({idx_cfg['label']})")
+        st.write(f"### 5. Company Performance vs Parent Index ({idx_cfg['label']})")
         st.caption("Normalized performance comparison (Rebased to 100.0) and relative daily return spread.")
 
         cmp_merged = pd.merge(
@@ -612,9 +642,9 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
                 spread_fig.update_layout(title=f"Relative Excess Spread (Stock - Index)", height=360, hovermode="x unified")
                 st.plotly_chart(spread_fig, use_container_width=True)
 
-    # 7. Compare Multiple Companies within the Same Sector
+    # 6. Compare Multiple Companies within the Same Sector
     st.markdown("---")
-    st.write("### 7. Compare Multiple Companies within the Same Sector")
+    st.write("### 6. Intra-Sector Peer Company Comparison")
     comp_registry = load_companies_registry()
 
     if comp_registry is not None and not comp_registry.empty:
@@ -700,9 +730,9 @@ def render_market_explorer(index_frames: Dict[str, pd.DataFrame], vix_df: pd.Dat
         else:
             st.info(f"Insufficient local stock records for sector '{sel_sector_peers}' to conduct intra-sector peer comparison.")
 
-    # 8. Explore Sector ETF Performance
+    # 7. Explore Sector ETF Performance
     st.markdown("---")
-    st.write("### 8. Explore Sector ETF Performance (8 Select Sector SPDR ETFs)")
+    st.write("### 7. Sector ETF Benchmark Performance (8 Select SPDR ETFs)")
     st.caption("Benchmark ETFs: XLK (Tech), XLF (Financials), XLE (Energy), XLV (Health), XLI (Industrials), XLY (Discretionary), XLP (Staples), XLU (Utilities)")
 
     sector_etfs_df = load_sector_etfs_data()
@@ -819,122 +849,128 @@ def render_global_event_explorer():
 
     st.markdown("---")
 
-    # 2. Browse Global Events Table
-    st.write("### 2. Global Events Directory")
+    # 1. Browse Global Events Table
+    st.write("### 1. Global Events Directory")
+    if filtered_events.empty:
+        st.info("No global events match the current filter criteria. Try expanding the date range or clearing the search query.")
+        return
+
     disp_cols = [c for c in ["event_id", "event_name", "category", "subcategory", "event_date", "region", "severity_score", "related_companies", "related_sectors"] if c in filtered_events.columns]
     st.dataframe(filtered_events[disp_cols].sort_values("event_date", ascending=False), use_container_width=True, hide_index=True)
 
-    # 3. View Event Descriptions & Entity Associations
-    if not filtered_events.empty:
-        st.markdown("---")
-        st.write("### 3. Detailed Event Inspector & Associated Entities")
+    # 2. View Event Descriptions & Entity Associations
+    st.markdown("---")
+    st.write("### 2. Detailed Event Inspector & Associated Entities")
 
-        event_choices = filtered_events["event_name"].tolist()
-        sel_event_name = st.selectbox("Select Event to Inspect in Detail:", options=event_choices, key="m2_event_select")
-        ev_row = filtered_events[filtered_events["event_name"] == sel_event_name].iloc[0]
+    event_choices = filtered_events["event_name"].tolist()
+    sel_event_name = st.selectbox("Select Event to Inspect in Detail:", options=event_choices, key="m2_event_select")
+    ev_row = filtered_events[filtered_events["event_name"] == sel_event_name].iloc[0]
 
-        card_col1, card_col2 = st.columns([1.6, 1.4])
-        with card_col1:
-            st.markdown(f"#### {ev_row['event_name']}")
-            st.markdown(f"**Category:** `{ev_row.get('category', 'General')}` | **Subcategory:** `{ev_row.get('subcategory', 'N/A')}`")
-            st.markdown(f"**Date:** `{pd.to_datetime(ev_row['event_date']).strftime('%Y-%m-%d')}` | **Region:** `{ev_row.get('region', 'Global')}`")
+    card_col1, card_col2 = st.columns([1.6, 1.4])
+    with card_col1:
+        st.markdown(f"#### {ev_row['event_name']}")
+        st.markdown(f"**Category:** `{ev_row.get('category', 'General')}` | **Subcategory:** `{ev_row.get('subcategory', 'N/A')}`")
+        st.markdown(f"**Date:** `{pd.to_datetime(ev_row['event_date']).strftime('%Y-%m-%d')}` | **Region:** `{ev_row.get('region', 'Global')}`")
 
-            sev = ev_row.get("severity_score", np.nan)
-            if pd.notna(sev):
-                st.markdown(f"**Impact Severity Score:** `{sev} / 5.0`")
+        sev = ev_row.get("severity_score", np.nan)
+        if pd.notna(sev):
+            st.markdown(f"**Impact Severity Score:** `{sev} / 5.0`")
 
-            desc = ev_row.get("description", ev_row.get("short_description", "No description available."))
-            st.info(f"**Description:**\n\n{desc}")
+        desc = ev_row.get("description", ev_row.get("short_description", "No description available."))
+        st.info(f"**Description:**\n\n{desc}")
 
-        with card_col2:
-            st.markdown("#### Associated Corporate Entities & Sectors")
-            rel_comp = ev_row.get("related_companies", "")
-            rel_sec = ev_row.get("related_sectors", "")
-            tags = ev_row.get("tags", "")
-            source_ref = ev_row.get("source_ref", "")
+    with card_col2:
+        st.markdown("#### Associated Corporate Entities & Sectors")
+        rel_comp = ev_row.get("related_companies", "")
+        rel_sec = ev_row.get("related_sectors", "")
+        tags = ev_row.get("tags", "")
+        source_ref = ev_row.get("source_ref", "")
 
-            st.write(f"**Affected Companies / Tickers:**")
-            if pd.notna(rel_comp) and str(rel_comp).strip():
-                tickers_list = str(rel_comp).split("|")
-                st.markdown(" ".join([f"`{t}`" for t in tickers_list]))
-            else:
-                st.write("*(Broad market impact / Unspecified)*")
+        st.write(f"**Affected Companies / Tickers:**")
+        if pd.notna(rel_comp) and str(rel_comp).strip():
+            tickers_list = str(rel_comp).split("|")
+            st.markdown(" ".join([f"`{t}`" for t in tickers_list]))
+        else:
+            st.write("*(Broad market impact / Unspecified)*")
 
-            st.write(f"**Affected Sectors:**")
-            if pd.notna(rel_sec) and str(rel_sec).strip():
-                sectors_list = str(rel_sec).split("|")
-                st.markdown(" ".join([f"`{s}`" for s in sectors_list]))
-            else:
-                st.write("*(All market sectors)*")
+        st.write(f"**Affected Sectors:**")
+        if pd.notna(rel_sec) and str(rel_sec).strip():
+            sectors_list = str(rel_sec).split("|")
+            st.markdown(" ".join([f"`{s}`" for s in sectors_list]))
+        else:
+            st.write("*(All market sectors)*")
 
-            if pd.notna(tags) and str(tags).strip():
-                st.write(f"**Tags:** `{tags}`")
-            if pd.notna(source_ref) and str(source_ref).strip():
-                st.caption(f"**Source Reference:** {source_ref}")
+        if pd.notna(tags) and str(tags).strip():
+            st.write(f"**Tags:** `{tags}`")
+        if pd.notna(source_ref) and str(source_ref).strip():
+            st.caption(f"**Source Reference:** {source_ref}")
 
-        # 4. View Related News Articles & Sentiment
-        st.markdown("---")
-        st.write(f"### 4. GDELT News Coverage & Sentiment Dynamics: {sel_event_name}")
-        news_df = load_news_articles()
+    # 3. View Related News Articles & Sentiment
+    st.markdown("---")
+    st.write(f"### 3. GDELT News Coverage & Sentiment Dynamics: {sel_event_name}")
+    news_df = load_news_articles()
 
-        if not news_df.empty:
-            ev_id = ev_row.get("event_id", "")
-            # Match news by event_id or event_name substring
+    if not news_df.empty:
+        ev_id = ev_row.get("event_id", "")
+        ev_date_str = pd.to_datetime(ev_row["event_date"]).strftime("%Y-%m-%d")
+        # Match news by event_id, event_name, or _match_event_subset
+        news_match = _match_event_subset(news_df, sel_event_name, ev_date_str)
+        if news_match.empty:
             news_match = news_df[
                 (news_df["matched_event_id"] == ev_id) |
                 (news_df["matched_event_name"].astype(str).str.contains(sel_event_name[:15], case=False, na=False))
             ]
 
-            if not news_match.empty:
-                n1, n2, n3, n4 = st.columns(4)
-                n1.metric("Articles Analyzed", len(news_match))
-                avg_tone = news_match["gdelt_tone"].mean() if "gdelt_tone" in news_match.columns else news_match["tone"].mean()
-                n2.metric("Average GDELT Tone", f"{avg_tone:.2f}", delta_color="normal")
-                dominant_sent = news_match["sentiment_label"].mode().values[0] if "sentiment_label" in news_match.columns else "Neutral"
-                n3.metric("Dominant Sentiment", dominant_sent)
-                n4.metric("Sources/Publishers", news_match["domain"].nunique() if "domain" in news_match.columns else "N/A")
+        if not news_match.empty:
+            n1, n2, n3, n4 = st.columns(4)
+            n1.metric("Articles Analyzed", len(news_match))
+            avg_tone = news_match["gdelt_tone"].mean() if "gdelt_tone" in news_match.columns else news_match["tone"].mean()
+            n2.metric("Average GDELT Tone", f"{avg_tone:.2f}", delta_color="normal")
+            dominant_sent = news_match["sentiment_label"].mode().values[0] if "sentiment_label" in news_match.columns else "Neutral"
+            n3.metric("Dominant Sentiment", dominant_sent)
+            n4.metric("Sources/Publishers", news_match["domain"].nunique() if "domain" in news_match.columns else "N/A")
 
-                # Timing phase and sentiment breakdown chart
-                col_n1, col_n2 = st.columns(2)
-                with col_n1:
-                    if "timing_phase" in news_match.columns:
-                        timing_counts = news_match["timing_phase"].value_counts().reset_index()
-                        timing_counts.columns = ["Timing Phase", "Articles"]
-                        time_fig = px.bar(
-                            timing_counts,
-                            x="Timing Phase",
-                            y="Articles",
-                            title="News Distribution Across Event Timing Phases",
-                            color="Timing Phase",
-                            color_discrete_map={"pre-event": "#636EFA", "day-of": "#EF553B", "post-event": "#00CC96"}
-                        )
-                        time_fig.update_layout(height=300)
-                        st.plotly_chart(time_fig, use_container_width=True)
+            # Timing phase and sentiment breakdown chart
+            col_n1, col_n2 = st.columns(2)
+            with col_n1:
+                if "timing_phase" in news_match.columns:
+                    timing_counts = news_match["timing_phase"].value_counts().reset_index()
+                    timing_counts.columns = ["Timing Phase", "Articles"]
+                    time_fig = px.bar(
+                        timing_counts,
+                        x="Timing Phase",
+                        y="Articles",
+                        title="News Distribution Across Event Timing Phases",
+                        color="Timing Phase",
+                        color_discrete_map={"pre-event": "#636EFA", "day-of": "#EF553B", "post-event": "#00CC96"}
+                    )
+                    time_fig.update_layout(height=300)
+                    st.plotly_chart(time_fig, use_container_width=True)
 
-                with col_n2:
-                    if "sentiment_label" in news_match.columns:
-                        sent_counts = news_match["sentiment_label"].value_counts().reset_index()
-                        sent_counts.columns = ["Sentiment", "Articles"]
-                        sent_fig = px.pie(
-                            sent_counts,
-                            names="Sentiment",
-                            values="Articles",
-                            title="News Sentiment Label Breakdown",
-                            color="Sentiment",
-                            color_discrete_map={"Positive": "#2ca02c", "Neutral": "#7f7f7f", "Negative": "#d62728"}
-                        )
-                        sent_fig.update_layout(height=300)
-                        st.plotly_chart(sent_fig, use_container_width=True)
+            with col_n2:
+                if "sentiment_label" in news_match.columns:
+                    sent_counts = news_match["sentiment_label"].value_counts().reset_index()
+                    sent_counts.columns = ["Sentiment", "Articles"]
+                    sent_fig = px.pie(
+                        sent_counts,
+                        names="Sentiment",
+                        values="Articles",
+                        title="News Sentiment Label Breakdown",
+                        color="Sentiment",
+                        color_discrete_map={"Positive": "#2ca02c", "Neutral": "#7f7f7f", "Negative": "#d62728"}
+                    )
+                    sent_fig.update_layout(height=300)
+                    st.plotly_chart(sent_fig, use_container_width=True)
 
-                # News articles table
-                st.write("**Related News Articles Table**")
-                news_disp_cols = [c for c in ["published_date", "title", "domain", "sourcecountry", "sentiment_label", "gdelt_tone", "polarity", "timing_phase"] if c in news_match.columns]
-                st.dataframe(news_match[news_disp_cols].sort_values("published_date", ascending=True), use_container_width=True, hide_index=True)
-            else:
-                st.info(f"No specific GDELT news records indexed for '{sel_event_name}' in the sample collection. Showing category news:")
-                cat_news = news_df[news_df["event_category"] == ev_row.get("category")].head(5)
-                if not cat_news.empty:
-                    st.dataframe(cat_news[[c for c in ["published_date", "title", "domain", "sentiment_label", "gdelt_tone"] if c in cat_news.columns]], use_container_width=True, hide_index=True)
+            # News articles table
+            st.write("**Related News Articles Table**")
+            news_disp_cols = [c for c in ["published_date", "title", "domain", "sourcecountry", "sentiment_label", "gdelt_tone", "polarity", "timing_phase"] if c in news_match.columns]
+            st.dataframe(news_match[news_disp_cols].sort_values("published_date", ascending=True), use_container_width=True, hide_index=True)
+        else:
+            st.info(f"No specific GDELT news records indexed for '{sel_event_name}' in the sample collection. Showing category news:")
+            cat_news = news_df[news_df["event_category"] == ev_row.get("category")].head(5)
+            if not cat_news.empty:
+                st.dataframe(cat_news[[c for c in ["published_date", "title", "domain", "sentiment_label", "gdelt_tone"] if c in cat_news.columns]], use_container_width=True, hide_index=True)
 
 
 # =============================================================================
@@ -996,10 +1032,21 @@ def render_event_impact_analyzer(index_frames: Dict[str, pd.DataFrame], vix_df: 
         f"{r['event_name']} ({pd.to_datetime(r['event_date']).strftime('%Y-%m-%d')})"
         for _, r in ev_pool.sort_values("event_date", ascending=False).iterrows()
     ]
+    if not ev_options:
+        st.info("No events match the selected category filter.")
+        return
 
-    sel_ev_full = st.selectbox("3. Select Specific Event to Analyze:", options=ev_options, key="m3_event_select")
-    sel_ev_name = sel_ev_full.split(" (")[0].strip()
-    ev_row = events_df[events_df["event_name"] == sel_ev_name].iloc[0]
+    # Default to premier shock (e.g. Russia-Ukraine) when present so all panels populate immediately
+    default_ev_idx = 0
+    for idx_opt, opt_name in enumerate(ev_options):
+        if "Russia" in opt_name and "Invasion" in opt_name:
+            default_ev_idx = idx_opt
+            break
+
+    sel_ev_full = st.selectbox("3. Select Specific Event to Analyze:", options=ev_options, index=default_ev_idx, key="m3_event_select")
+    sel_ev_name = sel_ev_full.rsplit(" (", 1)[0].strip() if " (" in sel_ev_full else sel_ev_full
+    ev_matches = events_df[events_df["event_name"] == sel_ev_name]
+    ev_row = ev_matches.iloc[0] if len(ev_matches) > 0 else events_df.iloc[0]
     ev_date_str = pd.to_datetime(ev_row["event_date"]).strftime("%Y-%m-%d")
 
     # Compute or lookup event metrics
@@ -1045,9 +1092,9 @@ def render_event_impact_analyzer(index_frames: Dict[str, pd.DataFrame], vix_df: 
                 v_p5 = vix_df.iloc[v_idx + 5]["Close"]
                 vix_5d_chg = v_p5 - v_p0
 
-    # 4. Display 5 Key Metrics Cards
+    # 1. Display 5 Key Metrics Cards & Trajectory
     st.markdown("---")
-    st.write(f"### Historical Metrics: {target_symbol} around {sel_ev_name}")
+    st.write(f"### 1. Historical Event Metrics & Price Trajectory: {target_symbol} around {sel_ev_name}")
 
     mc1, mc2, mc3, mc4, mc5 = st.columns(5)
     mc1.metric("Pre-Event 5D Return", _format_num(pre_5d_val, "%"), delta_color="normal")
@@ -1118,9 +1165,9 @@ def render_event_impact_analyzer(index_frames: Dict[str, pd.DataFrame], vix_df: 
             traj_fig.update_yaxes(title_text="VIX Level", secondary_y=True)
             st.plotly_chart(traj_fig, use_container_width=True)
 
-    # 13. Abnormal Returns & Cumulative Abnormal Returns (CAR)
+    # 2. Abnormal Returns & Cumulative Abnormal Returns (CAR)
     st.markdown("---")
-    st.write(f"### 13. Econometric Abnormal Returns (AR) & Cumulative Abnormal Returns (CAR)")
+    st.write(f"### 2. Econometric Abnormal Returns (AR) & Cumulative Abnormal Returns (CAR)")
     st.caption("Benchmark Market Model estimated over [T0-120, T0-11] clean pre-event window against the S&P 500 index.")
 
     sp_benchmark = index_frames["sp500"]
@@ -1164,18 +1211,20 @@ def render_event_impact_analyzer(index_frames: Dict[str, pd.DataFrame], vix_df: 
 
         st.caption("Econometric Note: Evaluates parametric cross-sectional two-tailed t-test H0: Mean(CAR) = 0. Statistical significance reflects empirical market association, not definitive causal proof.")
 
-    # 11. Compare Multiple Events
+    # 3. Compare Multiple Events
     st.markdown("---")
-    st.write(f"### 11. Multi-Event Comparative Performance: {target_symbol}")
+    st.write(f"### 3. Multi-Event Comparative Performance: {target_symbol}")
     st.caption("Overlay normalized price trajectories across multiple historical events on a synchronized relative trading day scale [-5, +30].")
 
     multi_ev_choices = events_df["event_name"].unique().tolist()
     default_multi = [sel_ev_name]
-    for other in ["UK Brexit Referendum", "Russia-Ukraine Invasion", "COVID-19 Pandemic Declaration"]:
-        if other in multi_ev_choices and other not in default_multi:
-            default_multi.append(other)
-            if len(default_multi) >= 3:
+    for key_pattern in ["Brexit", "Ukraine", "Pandemic", "Banking Crisis"]:
+        for c in multi_ev_choices:
+            if key_pattern in c and c not in default_multi:
+                default_multi.append(c)
                 break
+        if len(default_multi) >= 3:
+            break
 
     selected_multi_events = st.multiselect("Select Events to Compare:", options=multi_ev_choices, default=default_multi, key="m3_multi_ev")
 
@@ -1227,88 +1276,87 @@ def render_event_impact_analyzer(index_frames: Dict[str, pd.DataFrame], vix_df: 
         if summary_rows:
             st.dataframe(pd.DataFrame(summary_rows), use_container_width=True, hide_index=True)
 
-    # 12. Compare Companies and Sectors Affected by the Same Event
+    # 4. Compare Companies and Sectors Affected by the Same Event
     st.markdown("---")
-    st.write(f"### 12. Cross-Sector & Intra-Sector Company Impact: {sel_ev_name}")
+    st.write(f"### 4. Cross-Sector & Intra-Sector Company Impact: {sel_ev_name}")
 
     col_sec1, col_sec2 = st.columns(2)
 
     with col_sec1:
         st.write("**Sector ETF Returns Around Event**")
-        if sector_events_df is not None and not sector_events_df.empty:
-            sec_ev_sub = sector_events_df[sector_events_df["event_name"] == sel_ev_name]
-            if not sec_ev_sub.empty:
-                s_melt = sec_ev_sub.melt(
-                    id_vars=["sector", "ticker"],
-                    value_vars=["pre_5d_return_pct", "post_5d_return_pct", "post_30d_return_pct"],
-                    var_name="window",
-                    value_name="ret_pct"
-                )
-                s_melt["Window"] = s_melt["window"].map({
-                    "pre_5d_return_pct": "Pre-5D %",
-                    "post_5d_return_pct": "Post-5D %",
-                    "post_30d_return_pct": "Post-30D %"
-                })
-                s_fig = px.bar(
-                    s_melt,
-                    x="sector",
-                    y="ret_pct",
-                    color="Window",
-                    barmode="group",
-                    title=f"8 Sector ETFs Performance ({sel_ev_name})"
-                )
-                s_fig.add_hline(y=0, line_color="gray")
-                s_fig.update_layout(height=360, xaxis_tickangle=-20)
-                st.plotly_chart(s_fig, use_container_width=True)
-            else:
-                st.info(f"Sector event study data not available for '{sel_ev_name}'.")
+        sec_ev_sub = _match_event_subset(sector_events_df, sel_ev_name, ev_date_str)
+        if not sec_ev_sub.empty:
+            s_melt = sec_ev_sub.melt(
+                id_vars=["sector", "ticker"],
+                value_vars=["pre_5d_return_pct", "post_5d_return_pct", "post_30d_return_pct"],
+                var_name="window",
+                value_name="ret_pct"
+            )
+            s_melt["Window"] = s_melt["window"].map({
+                "pre_5d_return_pct": "Pre-5D %",
+                "post_5d_return_pct": "Post-5D %",
+                "post_30d_return_pct": "Post-30D %"
+            })
+            s_fig = px.bar(
+                s_melt,
+                x="sector",
+                y="ret_pct",
+                color="Window",
+                barmode="group",
+                title=f"8 Sector ETFs Performance ({sel_ev_name})"
+            )
+            s_fig.add_hline(y=0, line_color="gray")
+            s_fig.update_layout(height=360, xaxis_tickangle=-20)
+            st.plotly_chart(s_fig, use_container_width=True)
+        else:
+            st.info(f"Sector event study data not available for '{sel_ev_name}'.")
 
     with col_sec2:
         st.write("**Intra-Sector Dispersion Range**")
         disp_df = load_cross_company_dispersion()
-        if disp_df is not None and not disp_df.empty:
-            disp_sub = disp_df[disp_df["event_name"] == sel_ev_name]
-            if not disp_sub.empty:
-                d_fig = px.bar(
-                    disp_sub.sort_values("return_range_pct", ascending=True),
-                    x="return_range_pct",
-                    y="sector",
-                    orientation="h",
-                    title=f"Intra-Sector Return Dispersion Range % ({sel_ev_name})",
-                    color="return_range_pct",
-                    color_continuous_scale="Purples"
-                )
-                d_fig.update_layout(height=360)
-                st.plotly_chart(d_fig, use_container_width=True)
-            else:
-                st.info(f"Cross-company dispersion data not available for '{sel_ev_name}'.")
+        disp_sub = _match_event_subset(disp_df, sel_ev_name, ev_date_str)
+        if not disp_sub.empty:
+            d_fig = px.bar(
+                disp_sub.sort_values("return_range_pct", ascending=True),
+                x="return_range_pct",
+                y="sector",
+                orientation="h",
+                title=f"Intra-Sector Return Dispersion Range % ({sel_ev_name})",
+                color="return_range_pct",
+                color_continuous_scale="Purples"
+            )
+            d_fig.update_layout(height=360)
+            st.plotly_chart(d_fig, use_container_width=True)
+        else:
+            st.info(f"Cross-company dispersion data not available for '{sel_ev_name}'.")
 
     # Company response table for this event
-    if comp_events_df is not None and not comp_events_df.empty:
-        comp_ev_sub = comp_events_df[comp_events_df["event_name"] == sel_ev_name]
-        if not comp_ev_sub.empty:
-            st.write(f"**Company Cross-Sectional Performance Table ({len(comp_ev_sub)} Equities):**")
-            st.dataframe(comp_ev_sub[[
-                "ticker", "company_name", "sector", "price_t0",
-                "pre_5d_return_pct", "post_5d_return_pct", "post_30d_return_pct",
-                "spread_vs_sp500_5d_pct", "estimated_beta", "car_post_5d_pct"
-            ]].rename(columns={
-                "ticker": "Ticker", "company_name": "Company", "sector": "Sector", "price_t0": "Close T0",
-                "pre_5d_return_pct": "Pre-5D %", "post_5d_return_pct": "Post-5D %", "post_30d_return_pct": "Post-30D %",
-                "spread_vs_sp500_5d_pct": "Spread vs SPX %", "estimated_beta": "Beta", "car_post_5d_pct": "CAR +5D %"
-            }), use_container_width=True, hide_index=True)
+    comp_ev_sub = _match_event_subset(comp_events_df, sel_ev_name, ev_date_str)
+    if not comp_ev_sub.empty:
+        st.write(f"**Company Cross-Sectional Performance Table ({len(comp_ev_sub)} Equities):**")
+        st.dataframe(comp_ev_sub[[
+            "ticker", "company_name", "sector", "price_t0",
+            "pre_5d_return_pct", "post_5d_return_pct", "post_30d_return_pct",
+            "spread_vs_sp500_5d_pct", "estimated_beta", "car_post_5d_pct"
+        ]].rename(columns={
+            "ticker": "Ticker", "company_name": "Company", "sector": "Sector", "price_t0": "Close T0",
+            "pre_5d_return_pct": "Pre-5D %", "post_5d_return_pct": "Post-5D %", "post_30d_return_pct": "Post-30D %",
+            "spread_vs_sp500_5d_pct": "Spread vs SPX %", "estimated_beta": "Beta", "car_post_5d_pct": "CAR +5D %"
+        }), use_container_width=True, hide_index=True)
 
-    # 14. Related News Coverage & Sentiment
+    # 5. Related News Coverage & Sentiment
     st.markdown("---")
-    st.write(f"### 14. Related GDELT News Coverage & Sentiment: {sel_ev_name}")
+    st.write(f"### 5. Related GDELT News Coverage & Sentiment: {sel_ev_name}")
     news_df = load_news_articles()
 
     if not news_df.empty:
         ev_id = ev_row.get("event_id", "")
-        n_sub = news_df[
-            (news_df["matched_event_id"] == ev_id) |
-            (news_df["matched_event_name"].astype(str).str.contains(sel_ev_name[:15], case=False, na=False))
-        ]
+        n_sub = _match_event_subset(news_df, sel_ev_name, ev_date_str)
+        if n_sub.empty and "matched_event_name" in news_df.columns:
+            n_sub = news_df[
+                (news_df["matched_event_id"] == ev_id) |
+                (news_df["matched_event_name"].astype(str).str.contains(sel_ev_name[:15], case=False, na=False))
+            ]
         if not n_sub.empty:
             st.dataframe(n_sub[[
                 c for c in ["published_date", "title", "domain", "sentiment_label", "gdelt_tone", "polarity", "timing_phase"]
