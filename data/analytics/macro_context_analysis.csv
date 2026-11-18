@@ -1,0 +1,5 @@
+macro_dimension,regime,trading_sessions,avg_daily_return_pct,annualized_volatility_pct,avg_vix_level
+Yield Curve Spread (10Y - 2Y),Inverted (< 0.0%),546,0.076,15.95,18.06
+Yield Curve Spread (10Y - 2Y),Normal / Upward (>= 0.0%),2239,0.044,18.3,18.38
+CPI Inflation (YoY),High Inflation (>= 4.0%),544,0.021,19.0,21.75
+CPI Inflation (YoY),Moderate / Target Inflation (< 4.0%),1961,0.069,17.74,17.49

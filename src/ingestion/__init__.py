@@ -1,6 +1,7 @@
 """
 Data Ingestion Package
-Provides modules to ingest market benchmarks, company-level equities, and historical event datasets.
+Provides modules to ingest market benchmarks, company-level equities, historical event datasets,
+sector ETFs, and FRED macroeconomic indicators.
 """
 
 from src.ingestion.market_data import ingest_all_raw_data, ingest_market_data
@@ -26,4 +27,22 @@ from src.ingestion.gdelt_client import (
     GDELTClient,
     ingest_event_aligned_news,
     HISTORICAL_BENCHMARK_NEWS
+)
+from src.ingestion.etf_data import (
+    SECTOR_ETFS,
+    ETF_METADATA,
+    get_sector_etfs_metadata,
+    is_valid_etf_csv,
+    fetch_single_etf,
+    fetch_etfs_batch,
+    save_etf_data_incremental,
+    ingest_sector_etfs
+)
+from src.ingestion.fred_data import (
+    FRED_SERIES_CATALOG,
+    get_fred_api_key,
+    get_fred_catalog,
+    fetch_fred_series,
+    save_fred_series_incremental,
+    ingest_all_fred_indicators
 )
