@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-11-17T20:10:08.909748+00:00",
+  "target_count": 2,
+  "successful_count": 2,
+  "skipped_from_cache": 2,
+  "newly_downloaded": 0,
+  "failed_count": 0,
+  "successful_tickers": [
+    "XLF",
+    "XLK"
+  ],
+  "failed_tickers": {},
+  "combined_raw_csv": "data/raw/etfs/sector_etfs_raw.csv",
+  "output_directory": "C:\\Users\\AMITRA~1\\AppData\\Local\\Temp\\tmp2yhlmmkv",
+  "start_date": "2015-01-01",
+  "end_date": "2026-02-01"
+}

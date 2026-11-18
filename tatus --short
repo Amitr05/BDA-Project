@@ -1,0 +1,21 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'dashboard/app.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'main.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/analytics/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/ingestion/__init__.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'src/preprocessing/__init__.py', LF will be replaced by CRLF the next time Git touches it
+ README.md                                    |  264 [32m+++[m[31m--[m
+ dashboard/app.py                             | 1581 [32m++++++++++++++++++++[m[31m------[m
+ data/processed/dow_jones_processed.parquet   |  Bin [31m276593[m -> [32m303066[m bytes
+ data/processed/nasdaq_processed.parquet      |  Bin [31m278666[m -> [32m305124[m bytes
+ data/processed/news_articles.parquet         |  Bin [31m21917[m -> [32m22532[m bytes
+ data/processed/russell2000_processed.parquet |  Bin [31m276658[m -> [32m302920[m bytes
+ data/processed/sp500_processed.parquet       |  Bin [31m277134[m -> [32m303566[m bytes
+ data/processed/vix_processed.parquet         |  Bin [31m191947[m -> [32m207565[m bytes
+ data/raw/stock_ingestion_log.json            |    4 [32m+[m[31m-[m
+ main.py                                      |  288 [32m++[m[31m---[m
+ src/analytics/__init__.py                    |   29 [32m+[m[31m-[m
+ src/ingestion/__init__.py                    |   21 [32m+[m[31m-[m
+ src/preprocessing/__init__.py                |   27 [32m+[m[31m-[m
+ src/preprocessing/spark_session.py           |   34 [32m+[m[31m-[m
+ 14 files changed, 1624 insertions(+), 624 deletions(-)

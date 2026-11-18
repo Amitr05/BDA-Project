@@ -1,0 +1,155 @@
+{
+  "timestamp_utc": "2026-11-17T18:43:05.580428+00:00",
+  "api_key_used": false,
+  "total_series": 12,
+  "successful_series": 12,
+  "skipped_from_cache": 0,
+  "newly_downloaded": 12,
+  "failed_series": {},
+  "series_details": {
+    "CPIAUCSL": {
+      "path": "data/raw/fred\\CPIAUCSL_raw.csv",
+      "metadata": {
+        "indicator_name": "cpi_headline",
+        "title": "Consumer Price Index for All Urban Consumers: All Items",
+        "frequency": "Monthly",
+        "units": "Index 1982-1984=100",
+        "seasonal_adjustment": "Seasonally Adjusted",
+        "category": "Inflation",
+        "publication_lag_days": 15
+      }
+    },
+    "CPILFESL": {
+      "path": "data/raw/fred\\CPILFESL_raw.csv",
+      "metadata": {
+        "indicator_name": "cpi_core",
+        "title": "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy",
+        "frequency": "Monthly",
+        "units": "Index 1982-1984=100",
+        "seasonal_adjustment": "Seasonally Adjusted",
+        "category": "Inflation",
+        "publication_lag_days": 15
+      }
+    },
+    "FEDFUNDS": {
+      "path": "data/raw/fred\\FEDFUNDS_raw.csv",
+      "metadata": {
+        "indicator_name": "fed_funds_rate_monthly",
+        "title": "Federal Funds Effective Rate (Monthly Average)",
+        "frequency": "Monthly",
+        "units": "Percent",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Monetary Policy",
+        "publication_lag_days": 1
+      }
+    },
+    "DFF": {
+      "path": "data/raw/fred\\DFF_raw.csv",
+      "metadata": {
+        "indicator_name": "fed_funds_rate_daily",
+        "title": "Federal Funds Effective Rate (Daily)",
+        "frequency": "Daily",
+        "units": "Percent",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Monetary Policy",
+        "publication_lag_days": 1
+      }
+    },
+    "DGS10": {
+      "path": "data/raw/fred\\DGS10_raw.csv",
+      "metadata": {
+        "indicator_name": "treasury_yield_10y",
+        "title": "Market Yield on U.S. Treasury Securities at 10-Year Constant Maturity",
+        "frequency": "Daily",
+        "units": "Percent",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Treasury Yields",
+        "publication_lag_days": 0
+      }
+    },
+    "DGS2": {
+      "path": "data/raw/fred\\DGS2_raw.csv",
+      "metadata": {
+        "indicator_name": "treasury_yield_2y",
+        "title": "Market Yield on U.S. Treasury Securities at 2-Year Constant Maturity",
+        "frequency": "Daily",
+        "units": "Percent",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Treasury Yields",
+        "publication_lag_days": 0
+      }
+    },
+    "T10Y2Y": {
+      "path": "data/raw/fred\\T10Y2Y_raw.csv",
+      "metadata": {
+        "indicator_name": "yield_curve_spread_10y2y",
+        "title": "10-Year Treasury Constant Maturity Minus 2-Year Treasury Constant Maturity Spread",
+        "frequency": "Daily",
+        "units": "Percent",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Treasury Yields",
+        "publication_lag_days": 0
+      }
+    },
+    "DGS3MO": {
+      "path": "data/raw/fred\\DGS3MO_raw.csv",
+      "metadata": {
+        "indicator_name": "treasury_yield_3m",
+        "title": "Market Yield on U.S. Treasury Securities at 3-Month Constant Maturity",
+        "frequency": "Daily",
+        "units": "Percent",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Treasury Yields",
+        "publication_lag_days": 0
+      }
+    },
+    "UNRATE": {
+      "path": "data/raw/fred\\UNRATE_raw.csv",
+      "metadata": {
+        "indicator_name": "unemployment_rate",
+        "title": "Civilian Unemployment Rate",
+        "frequency": "Monthly",
+        "units": "Percent",
+        "seasonal_adjustment": "Seasonally Adjusted",
+        "category": "Labor Market",
+        "publication_lag_days": 7
+      }
+    },
+    "A191RL1Q225SBEA": {
+      "path": "data/raw/fred\\A191RL1Q225SBEA_raw.csv",
+      "metadata": {
+        "indicator_name": "gdp_growth_annualized",
+        "title": "Real Gross Domestic Product: Percent Change from Preceding Period",
+        "frequency": "Quarterly",
+        "units": "Percent Change at Annual Rate",
+        "seasonal_adjustment": "Seasonally Adjusted Annual Rate",
+        "category": "Economic Output",
+        "publication_lag_days": 30
+      }
+    },
+    "GDPC1": {
+      "path": "data/raw/fred\\GDPC1_raw.csv",
+      "metadata": {
+        "indicator_name": "real_gdp",
+        "title": "Real Gross Domestic Product",
+        "frequency": "Quarterly",
+        "units": "Billions of Chained 2017 Dollars",
+        "seasonal_adjustment": "Seasonally Adjusted Annual Rate",
+        "category": "Economic Output",
+        "publication_lag_days": 30
+      }
+    },
+    "UMCSENT": {
+      "path": "data/raw/fred\\UMCSENT_raw.csv",
+      "metadata": {
+        "indicator_name": "consumer_sentiment",
+        "title": "University of Michigan: Consumer Sentiment",
+        "frequency": "Monthly",
+        "units": "Index 1966:Q1=100",
+        "seasonal_adjustment": "Not Seasonally Adjusted",
+        "category": "Consumer Confidence",
+        "publication_lag_days": 15
+      }
+    }
+  }
+}

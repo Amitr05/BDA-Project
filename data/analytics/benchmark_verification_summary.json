@@ -1,0 +1,39 @@
+{
+  "sample_tickers": [
+    "AAPL",
+    "MSFT",
+    "JPM",
+    "XOM",
+    "JNJ"
+  ],
+  "sample_companies_count": 4,
+  "total_records_processed": 11144,
+  "spark_execution_time_seconds": 6.27,
+  "independent_execution_time_seconds": 0.2006,
+  "max_return_difference": 0.0,
+  "max_volatility_difference": 2.0816681711721685e-17,
+  "numerical_precision_verified": true,
+  "market_model_ols_verified": true,
+  "detailed_results": {
+    "AAPL": {
+      "records_evaluated": 2785,
+      "returns_match_tol": true,
+      "volatility_match_tol": true
+    },
+    "JPM": {
+      "records_evaluated": 2785,
+      "returns_match_tol": true,
+      "volatility_match_tol": true
+    },
+    "XOM": {
+      "records_evaluated": 2785,
+      "returns_match_tol": true,
+      "volatility_match_tol": true
+    },
+    "JNJ": {
+      "records_evaluated": 2785,
+      "returns_match_tol": true,
+      "volatility_match_tol": true
+    }
+  }
+}

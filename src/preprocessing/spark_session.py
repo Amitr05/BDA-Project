@@ -32,11 +32,23 @@ JAVA_17_OPTS = (
 def ensure_java_environment() -> None:
     """Ensure JAVA_HOME and Python worker paths are configured for PySpark execution on Windows."""
     # Ensure PySpark workers use the exact same Python executable as the current environment
-    os.environ["PYSPARK_PYTHON"] = sys.executable
-    os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+    # Resolve 8.3 short path on Windows to avoid issues with spaces in user directory names
+    py_exec = sys.executable
+    if sys.platform == "win32" and " " in py_exec:
+        try:
+            import ctypes
+            buf = ctypes.create_unicode_buffer(500)
+            if ctypes.windll.kernel32.GetShortPathNameW(py_exec, buf, 500):
+                py_exec = buf.value
+        except Exception:
+            pass
+
+    os.environ["PYSPARK_PYTHON"] = py_exec
+    os.environ["PYSPARK_DRIVER_PYTHON"] = py_exec
 
     if "JAVA_HOME" not in os.environ or not os.path.exists(os.environ["JAVA_HOME"]):
         potential_jdk_paths = [
+            r"C:\Users\Amit Ravi Mishra\AppData\Local\Programs\Eclipse Adoptium\jdk-25.0.3.9-hotspot",
             r"C:\Program Files\Eclipse Adoptium\jdk-17.0.21.9-hotspot",
             r"C:\Program Files\Java\jdk-17",
             r"C:\Program Files\Eclipse Adoptium\jdk-17",
@@ -44,8 +56,18 @@ def ensure_java_environment() -> None:
         ]
         for path in potential_jdk_paths:
             if os.path.exists(path):
-                os.environ["JAVA_HOME"] = path
-                logger.info(f"Auto-configured JAVA_HOME -> {path}")
+                # Resolve short path for JAVA_HOME if spaces exist
+                java_path = path
+                if sys.platform == "win32" and " " in java_path:
+                    try:
+                        import ctypes
+                        buf = ctypes.create_unicode_buffer(500)
+                        if ctypes.windll.kernel32.GetShortPathNameW(path, buf, 500):
+                            java_path = buf.value
+                    except Exception:
+                        pass
+                os.environ["JAVA_HOME"] = java_path
+                logger.info(f"Auto-configured JAVA_HOME -> {java_path}")
                 break
 
     # Set PYSPARK_SUBMIT_ARGS to include Java 17 module parameters
@@ -62,7 +84,9 @@ def get_spark_session(app_name: str = "GlobalEventMarketAnalysis") -> SparkSessi
 
     builder = (
         SparkSession.builder.appName(app_name)
-        .master("local[*]")
+        .master("local[4]")
+        .config("spark.driver.bindAddress", "127.0.0.1")
+        .config("spark.driver.host", "127.0.0.1")
         .config("spark.driver.memory", "4g")
         .config("spark.sql.shuffle.partitions", "4")
         .config("spark.sql.execution.arrow.pyspark.enabled", "true")

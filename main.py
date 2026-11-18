@@ -1,25 +1,59 @@
-
 """
-Main Execution Script - Global Event & US Stock Market Analysis (Phase 1)
+Main Execution Script - Global Event, Multi-Asset & Macroeconomic Analytics Platform
+===================================================================================
+Orchestrates the end-to-end data processing and financial analytics architecture
+across three logical storage layers (Raw -> Processed -> Analytics):
 
-Orchestrates the entire Phase 1 workflow:
-1. Market Data Ingestion (four equity indices + VIX)
-2. Curated Event Dataset Creation
-3. PySpark Preprocessing Pipeline
-4. Multi-Index Event-Study Quantitative Calculations
+Layer 1: Raw Data Collection & Ingestion
+  1. US Benchmark Equity Indices (S&P 500, NASDAQ, Dow Jones, Russell 2000) & VIX
+  2. Curated Global Events Calendar & Comprehensive Historical Event Database
+  3. 8 Select Sector SPDR ETFs (XLK, XLF, XLE, XLV, XLI, XLY, XLP, XLU)
+  4. FRED Point-in-Time Macroeconomic Indicators (CPI, Fed Funds, Yield Curve, etc.)
+  5. 300+ Company Equities and GDELT Global News Records
+
+Layer 2: PySpark Preprocessing & Multi-Source Integration Engine
+  1. Schema standardisation and data cleaning across all 7 sources
+  2. Complex multi-dataset joins (equities-to-sectors, news-to-events, macro-to-trading calendar)
+  3. Distributed window functions (lagged returns, rolling 21D volatility, cumulative returns)
+  4. Date-based aggregations (daily news sentiment ratios, macro publication dates)
+  5. Sector-partitioned Parquet persistence (data/processed/stocks/sector=.../)
+
+Layer 3: Advanced Financial Analytics & Econometric Engine
+  1. Multi-Index & Sector Event Studies
+  2. Company-Level Event Studies with Market Model Abnormal Returns (AR & CAR)
+  3. Parametric Cross-Sectional Statistical Significance Testing (t-stats, p-values, DoF)
+  4. Explicit econometric assumptions and limitations reporting (no correlation-as-causation)
+  5. Cross-Company intra-sector dispersion and resilience rankings
+  6. Macroeconomic regime conditioning (yield curve inversions and inflation regimes)
+  7. Benchmark & Mathematical Verification (PySpark vs independent NumPy precision < 1e-5)
 """
 
 import sys
+import os
 import logging
+from typing import Optional
 
 from src.ingestion.market_data import ingest_all_raw_data
 from src.ingestion.event_data import save_curated_events
+from src.ingestion.etf_data import ingest_sector_etfs
+from src.ingestion.fred_data import ingest_all_fred_indicators
 from src.preprocessing.spark_session import (
     get_spark_session,
     stop_spark_session
 )
 from src.preprocessing.market_pipeline import run_preprocessing_pipeline
+from src.preprocessing.etf_pipeline import run_etf_preprocessing_pipeline
+from src.preprocessing.macro_pipeline import run_macro_pipeline
+from src.preprocessing.unified_pipeline import run_unified_pyspark_pipeline
 from src.analytics.event_study import run_event_study_analysis
+from src.analytics.sector_analysis import (
+    load_processed_etf_frames,
+    align_sector_etfs_with_market_and_vix,
+    run_sector_event_study,
+    calculate_sector_performance_summary
+)
+from src.analytics.advanced_event_study import run_master_analytics_pipeline
+from src.analytics.benchmark_validation import run_benchmark_and_verification
 
 
 logging.basicConfig(
@@ -27,22 +61,10 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s"
 )
 
-logger = logging.getLogger("Phase1-Pipeline")
+logger = logging.getLogger("BDA-Pipeline")
 
-
-# All datasets required for the pipeline
 REQUIRED_TICKERS = ["^GSPC", "^IXIC", "^DJI", "^RUT", "^VIX"]
 
-# Raw CSV paths
-RAW_PATHS = {
-    "^GSPC": "data/raw/sp500_raw.csv",
-    "^IXIC": "data/raw/nasdaq_raw.csv",
-    "^DJI": "data/raw/dow_jones_raw.csv",
-    "^RUT": "data/raw/russell2000_raw.csv",
-    "^VIX": "data/raw/vix_raw.csv"
-}
-
-# Processed Parquet paths
 PROCESSED_PATHS = {
     "sp500": "data/processed/sp500_processed.parquet",
     "nasdaq": "data/processed/nasdaq_processed.parquet",
@@ -52,144 +74,126 @@ PROCESSED_PATHS = {
 }
 
 
-def run_pipeline(force_download: bool = False):
+def run_pipeline(
+    force_download: bool = False,
+    include_etfs: bool = True,
+    include_macro: bool = True,
+    include_pyspark_master: bool = True,
+    include_analytics_master: bool = True
+):
+    logger.info("=" * 80)
+    logger.info("STARTING BDA PLATFORM: MULTI-ASSET, PYSPARK & ECONOMETRIC PIPELINE")
+    logger.info("=" * 80)
 
-    logger.info("=" * 70)
-    logger.info("Starting Phase 1: Global Event & US Stock Market Analysis")
-    logger.info("=" * 70)
+    # =========================================================================
+    # LAYER 1: RAW INGESTION
+    # =========================================================================
+    logger.info("\n>>> LAYER 1: RAW DATA INGESTION <<<")
 
-    # ---------------------------------------------------------
-    # Step 1: Market Data Ingestion
-    # ---------------------------------------------------------
-
-    logger.info("[Step 1/4] Ingesting market datasets...")
-
-    market_files = ingest_all_raw_data(
-        force_download=force_download
-    )
-
+    logger.info("[1.1] Ingesting US benchmark indices and VIX...")
+    market_files = ingest_all_raw_data(force_download=force_download)
     for ticker, path in market_files.items():
-        logger.info(" - %s: %s", ticker, path)
+        logger.info(" - %s -> %s", ticker, path)
 
-    # Validate ingestion before proceeding
-    missing_tickers = [
-        ticker for ticker in REQUIRED_TICKERS
-        if ticker not in market_files
-    ]
+    missing = [t for t in REQUIRED_TICKERS if t not in market_files]
+    if missing:
+        raise RuntimeError(f"Missing required benchmark market datasets: {missing}")
 
-    if missing_tickers:
-        raise RuntimeError(
-            "Market data ingestion incomplete. "
-            f"Missing datasets: {missing_tickers}. "
-            "Check the ingestion logs and retry."
-        )
+    logger.info("[1.2] Initializing curated event calendar and database...")
+    events_path = save_curated_events("data/raw/events.csv", overwrite=False)
+    logger.info(" - Events registered at %s", events_path)
 
-    logger.info(
-        "Successfully ingested all %d required datasets.",
-        len(REQUIRED_TICKERS)
-    )
+    if include_etfs:
+        logger.info("[1.3] Ingesting 8 Sector ETFs (XLK, XLF, XLE, XLV, XLI, XLY, XLP, XLU)...")
+        etf_summary = ingest_sector_etfs(force_download=force_download)
+        logger.info(" - Sector ETF ingestion: %d/%d successful.", etf_summary["successful_count"], etf_summary["target_count"])
 
-    # ---------------------------------------------------------
-    # Step 2: Curated Events
-    # ---------------------------------------------------------
+    if include_macro:
+        logger.info("[1.4] Ingesting FRED Macroeconomic Indicators (CPI, Rates, Yields, GDP, Sentiment)...")
+        fred_summary = ingest_all_fred_indicators(force_download=force_download)
+        logger.info(" - FRED indicators: %d/%d series active.", fred_summary["successful_series"], fred_summary["total_series"])
 
-    logger.info("[Step 2/4] Initializing curated global events calendar...")
+    # =========================================================================
+    # LAYER 2: PYSPARK PREPROCESSING & DATA STORAGE
+    # =========================================================================
+    logger.info("\n>>> LAYER 2: PYSPARK PREPROCESSING & STORAGE <<<")
 
-    events_path = save_curated_events(
-        "data/raw/events.csv",
-        overwrite=False
-    )
+    if include_pyspark_master:
+        logger.info("[2.1] Executing Unified PySpark Preprocessing Pipeline...")
+        spark_results = run_unified_pyspark_pipeline()
+        logger.info(" - PySpark unified pipeline completed across benchmarks, equities, ETFs, news, and macro.")
 
-    logger.info(" - Events stored at: %s", events_path)
+    if include_macro:
+        logger.info("[2.2] Aligning macroeconomic series with trading calendar (Zero Look-Ahead Bias)...")
+        macro_dfs = run_macro_pipeline()
+        logger.info(" - Aligned %d trading days of point-in-time macro indicators.", len(macro_dfs.get("aligned", [])))
 
-    # ---------------------------------------------------------
-    # Step 3: PySpark Preprocessing
-    # ---------------------------------------------------------
-
-    logger.info("[Step 3/4] Launching PySpark preprocessing pipeline...")
-
-    spark = get_spark_session("Phase1_Data_Processing")
-
-    try:
-        processed_dfs = run_preprocessing_pipeline(
-            spark=spark,
-
-            # S&P 500
-            sp500_raw_path=market_files["^GSPC"],
-            sp500_out_path=PROCESSED_PATHS["sp500"],
-
-            # NASDAQ
-            nasdaq_raw_path=market_files["^IXIC"],
-            nasdaq_out_path=PROCESSED_PATHS["nasdaq"],
-
-            # Dow Jones
-            dow_jones_raw_path=market_files["^DJI"],
-            dow_jones_out_path=PROCESSED_PATHS["dow_jones"],
-
-            # Russell 2000
-            russell2000_raw_path=market_files["^RUT"],
-            russell2000_out_path=PROCESSED_PATHS["russell2000"],
-
-            # VIX
-            vix_raw_path=market_files["^VIX"],
-            vix_out_path=PROCESSED_PATHS["vix"]
-        )
-
-        for dataset_name, dataframe in processed_dfs.items():
-            logger.info(
-                " - %s Processed Records: %d",
-                dataset_name.upper(),
-                dataframe.count()
+    if include_etfs:
+        logger.info("[2.3] Processing Sector ETF pipeline and market alignment...")
+        etf_frames = load_processed_etf_frames()
+        if etf_frames:
+            align_sector_etfs_with_market_and_vix(
+                etf_frames=etf_frames,
+                market_parquet_paths=PROCESSED_PATHS,
+                vix_parquet_path=PROCESSED_PATHS["vix"]
             )
+            run_sector_event_study(
+                events_csv_path=events_path,
+                etf_frames=etf_frames,
+                vix_parquet_path=PROCESSED_PATHS["vix"]
+            )
+            perf_summary = calculate_sector_performance_summary(etf_frames)
+            logger.info(" - Sector ETF summary generated (%d sectors).", len(perf_summary))
 
-    finally:
-        stop_spark_session(spark)
-
-    # ---------------------------------------------------------
-    # Step 4: Multi-Index Event Study
-    # ---------------------------------------------------------
-
-    logger.info("[Step 4/4] Executing multi-index event-study analytics...")
-
-    index_parquet_paths = {
-        "sp500": PROCESSED_PATHS["sp500"],
-        "nasdaq": PROCESSED_PATHS["nasdaq"],
-        "dow_jones": PROCESSED_PATHS["dow_jones"],
-        "russell2000": PROCESSED_PATHS["russell2000"]
-    }
-
-    study_results = run_event_study_analysis(
+    # Benchmark equity indices event study
+    logger.info("[2.4] Running equity indices event study baseline...")
+    run_event_study_analysis(
         events_csv_path=events_path,
         sp500_parquet_path=PROCESSED_PATHS["sp500"],
         vix_parquet_path=PROCESSED_PATHS["vix"],
         output_csv_path="data/processed/event_study_results.csv",
         output_parquet_path="data/processed/event_study_results.parquet",
-        index_parquet_paths=index_parquet_paths
+        index_parquet_paths=PROCESSED_PATHS
     )
 
-    logger.info(
-        " - Generated %d event-index records.",
-        len(study_results)
-    )
+    # =========================================================================
+    # LAYER 3: ADVANCED FINANCIAL ANALYTICS & ECONOMETRICS
+    # =========================================================================
+    logger.info("\n>>> LAYER 3: ADVANCED FINANCIAL ANALYTICS (data/analytics/) <<<")
 
-    if not study_results.empty:
+    if include_analytics_master:
+        logger.info("[3.1] Executing Master Financial Analytics & Econometric Engine...")
+        analytics_outputs = run_master_analytics_pipeline(output_dir="data/analytics")
+        logger.info(" - Successfully persisted 8 analytical products to Layer 3 (data/analytics/).")
+
+        logger.info("[3.2] Executing Benchmark & Mathematical Precision Verification...")
+        bench_res = run_benchmark_and_verification()
         logger.info(
-            " - Indices represented: %s",
-            ", ".join(sorted(study_results["index"].unique()))
+            " - Benchmark Precision Verified: %s (Spark time: %ss, Max return diff: %.2e, Max vol diff: %.2e)",
+            bench_res["numerical_precision_verified"],
+            bench_res["spark_execution_time_seconds"],
+            bench_res["max_return_difference"],
+            bench_res["max_volatility_difference"]
         )
 
-        logger.info(
-            " - Events represented: %d",
-            study_results["event_name"].nunique()
-        )
-
-    logger.info("=" * 70)
-    logger.info("Phase 1 Pipeline Execution Completed Successfully!")
-    logger.info("To launch the Streamlit dashboard, run:")
+    logger.info("=" * 80)
+    logger.info("PIPELINE EXECUTION COMPLETED SUCCESSFULLY ACROSS ALL THREE LAYERS!")
+    logger.info("To explore the interactive dashboard:")
     logger.info("    python -m streamlit run dashboard/app.py")
-    logger.info("=" * 70)
+    logger.info("=" * 80)
 
 
 if __name__ == "__main__":
     force_dl = "--force-download" in sys.argv
-    run_pipeline(force_download=force_dl)
+    skip_etfs = "--skip-etfs" in sys.argv
+    skip_macro = "--skip-macro" in sys.argv
+    skip_spark = "--skip-pyspark" in sys.argv
+    skip_analytics = "--skip-analytics" in sys.argv
+
+    run_pipeline(
+        force_download=force_dl,
+        include_etfs=not skip_etfs,
+        include_macro=not skip_macro,
+        include_pyspark_master=not skip_spark,
+        include_analytics_master=not skip_analytics
+    )
