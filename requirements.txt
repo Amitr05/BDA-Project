@@ -1,6 +1,9 @@
-# Dependencies for Global Event & US Stock Market Analysis (Phase 1)
+# Dependencies for Global Event & US Stock Market Analysis Platform
 yfinance>=0.2.36
 pandas>=2.0.0,<=2.2.3
+numpy>=1.26.0
+scipy>=1.12.0
+requests>=2.31.0
 pyspark>=3.5.0
 streamlit>=1.30.0
 plotly>=5.18.0
