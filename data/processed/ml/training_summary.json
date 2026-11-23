@@ -1,0 +1,112 @@
+{
+  "status": "SUCCESS",
+  "input_conflict_episodes": 314,
+  "usable_training_observations": 310,
+  "excluded_observations_count": 4,
+  "excluded_observations_detail": [
+    {
+      "episode_id": "CONF_EP_0004",
+      "event_date": "2015-01-20",
+      "canonical_region": "Eastern Europe",
+      "reason": "Insufficient pre-event historical trading days: T0 index 11 < required minimum lookback of 20 days"
+    },
+    {
+      "episode_id": "CONF_EP_0061",
+      "event_date": "2015-01-01",
+      "canonical_region": "Middle East / MENA",
+      "reason": "Insufficient pre-event historical trading days: T0 index 0 < required minimum lookback of 20 days"
+    },
+    {
+      "episode_id": "CONF_EP_0062",
+      "event_date": "2015-01-29",
+      "canonical_region": "Middle East / MENA",
+      "reason": "Insufficient pre-event historical trading days: T0 index 18 < required minimum lookback of 20 days"
+    },
+    {
+      "episode_id": "CONF_EP_0200",
+      "event_date": "2015-01-03",
+      "canonical_region": "South Asia",
+      "reason": "Insufficient pre-event historical trading days: T0 index 1 < required minimum lookback of 20 days"
+    }
+  ],
+  "date_range": {
+    "min_event_date": "2015-01-31",
+    "max_event_date": "2025-12-25",
+    "min_t0_date": "2015-02-02",
+    "max_t0_date": "2025-12-26"
+  },
+  "regional_breakdown": {
+    "Middle East / MENA": 121,
+    "South Asia": 114,
+    "Eastern Europe": 56,
+    "North America": 16,
+    "East Asia": 3
+  },
+  "duration_regime_breakdown": {
+    "Short / Tactical": 145,
+    "Medium / Campaign": 113,
+    "Protracted / War": 52
+  },
+  "target_return_statistics": {
+    "sp500_fwd_ret_5d": {
+      "mean": 0.2792309077934675,
+      "std": 2.2044091385809934,
+      "min": -7.18276692270492,
+      "max": 11.31268894834041,
+      "median": 0.4555441787090997
+    },
+    "sp500_fwd_ret_20d": {
+      "mean": 0.9461919105635781,
+      "std": 4.193028140226893,
+      "min": -24.956312006019978,
+      "max": 19.275152584700717,
+      "median": 1.3020715375431813
+    },
+    "nasdaq_fwd_ret_5d": {
+      "mean": 0.4106767069956741,
+      "std": 2.663396554291653,
+      "min": -7.975219548162427,
+      "max": 9.922041693278993,
+      "median": 0.5277620482782908
+    },
+    "nasdaq_fwd_ret_20d": {
+      "mean": 1.2561891710979372,
+      "std": 5.214553493413213,
+      "min": -24.63808127488505,
+      "max": 23.33448368527502,
+      "median": 1.8476922559007236
+    },
+    "dow_jones_fwd_ret_5d": {
+      "mean": 0.22414635694322504,
+      "std": 2.154905450951244,
+      "min": -7.908404780640921,
+      "max": 11.88941383149631,
+      "median": 0.3492706430282877
+    },
+    "dow_jones_fwd_ret_20d": {
+      "mean": 0.8088433286081222,
+      "std": 4.181302725741824,
+      "min": -27.349332168806583,
+      "max": 18.630589670297226,
+      "median": 1.045333132934645
+    },
+    "russell2000_fwd_ret_5d": {
+      "mean": 0.2488225255037345,
+      "std": 2.979143127239871,
+      "min": -9.73040333104117,
+      "max": 11.163354605498554,
+      "median": 0.38055574959371397
+    },
+    "russell2000_fwd_ret_20d": {
+      "mean": 0.8190565877471663,
+      "std": 5.9034312801798885,
+      "min": -34.27402128109439,
+      "max": 22.264204527985456,
+      "median": 0.6971279908832284
+    }
+  },
+  "total_columns": 38,
+  "null_counts_total": 0,
+  "parquet_path": "C:\\Users\\Amit Ravi Mishra\\Amit\\Coding\\BDA_Project\\BDA-Project\\data\\processed\\ml\\conflict_market_training.parquet",
+  "csv_path": "C:\\Users\\Amit Ravi Mishra\\Amit\\Coding\\BDA_Project\\BDA-Project\\data\\processed\\ml\\conflict_market_training.csv"
+}

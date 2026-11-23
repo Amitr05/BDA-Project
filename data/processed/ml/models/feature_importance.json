@@ -1,0 +1,191 @@
+[
+  {
+    "feature": "vix_level",
+    "raw_name": "num__vix_level",
+    "feature_type": "numeric",
+    "importance": 0.243975,
+    "cumulative_importance": 0.243975
+  },
+  {
+    "feature": "sma_50_ratio_mkt",
+    "raw_name": "num__sma_50_ratio_mkt",
+    "feature_type": "numeric",
+    "importance": 0.136955,
+    "cumulative_importance": 0.38093
+  },
+  {
+    "feature": "treasury_yield_2y",
+    "raw_name": "num__treasury_yield_2y",
+    "feature_type": "numeric",
+    "importance": 0.119748,
+    "cumulative_importance": 0.500678
+  },
+  {
+    "feature": "pre_20d_return_mkt",
+    "raw_name": "num__pre_20d_return_mkt",
+    "feature_type": "numeric",
+    "importance": 0.096559,
+    "cumulative_importance": 0.597237
+  },
+  {
+    "feature": "treasury_yield_10y",
+    "raw_name": "num__treasury_yield_10y",
+    "feature_type": "numeric",
+    "importance": 0.079124,
+    "cumulative_importance": 0.676361
+  },
+  {
+    "feature": "yield_spread_10y2y",
+    "raw_name": "num__yield_spread_10y2y",
+    "feature_type": "numeric",
+    "importance": 0.059619,
+    "cumulative_importance": 0.73598
+  },
+  {
+    "feature": "pre_5d_return_mkt",
+    "raw_name": "num__pre_5d_return_mkt",
+    "feature_type": "numeric",
+    "importance": 0.05339,
+    "cumulative_importance": 0.78937
+  },
+  {
+    "feature": "rolling_21d_vol_mkt",
+    "raw_name": "num__rolling_21d_vol_mkt",
+    "feature_type": "numeric",
+    "importance": 0.042183,
+    "cumulative_importance": 0.831553
+  },
+  {
+    "feature": "annualized_21d_vol_mkt",
+    "raw_name": "num__annualized_21d_vol_mkt",
+    "feature_type": "numeric",
+    "importance": 0.038563,
+    "cumulative_importance": 0.870116
+  },
+  {
+    "feature": "vix_5d_change_pct",
+    "raw_name": "num__vix_5d_change_pct",
+    "feature_type": "numeric",
+    "importance": 0.038532,
+    "cumulative_importance": 0.908648
+  },
+  {
+    "feature": "fatalities_best",
+    "raw_name": "num__fatalities_best",
+    "feature_type": "numeric",
+    "importance": 0.030715,
+    "cumulative_importance": 0.939363
+  },
+  {
+    "feature": "log_fatalities",
+    "raw_name": "num__log_fatalities",
+    "feature_type": "numeric",
+    "importance": 0.022617,
+    "cumulative_importance": 0.96198
+  },
+  {
+    "feature": "incident_count",
+    "raw_name": "num__incident_count",
+    "feature_type": "numeric",
+    "importance": 0.021242,
+    "cumulative_importance": 0.983222
+  },
+  {
+    "feature": "duration_regime_Medium / Campaign",
+    "raw_name": "cat__duration_regime_Medium / Campaign",
+    "feature_type": "categorical",
+    "importance": 0.008437,
+    "cumulative_importance": 0.991659
+  },
+  {
+    "feature": "duration_regime_Protracted / War",
+    "raw_name": "cat__duration_regime_Protracted / War",
+    "feature_type": "categorical",
+    "importance": 0.001745,
+    "cumulative_importance": 0.993404
+  },
+  {
+    "feature": "canonical_region_Eastern Europe",
+    "raw_name": "cat__canonical_region_Eastern Europe",
+    "feature_type": "categorical",
+    "importance": 0.001571,
+    "cumulative_importance": 0.994975
+  },
+  {
+    "feature": "type_of_violence_desc_Non-state armed conflict",
+    "raw_name": "cat__type_of_violence_desc_Non-state armed conflict",
+    "feature_type": "categorical",
+    "importance": 0.001559,
+    "cumulative_importance": 0.996534
+  },
+  {
+    "feature": "duration_regime_Short / Tactical",
+    "raw_name": "cat__duration_regime_Short / Tactical",
+    "feature_type": "categorical",
+    "importance": 0.001481,
+    "cumulative_importance": 0.998015
+  },
+  {
+    "feature": "canonical_region_Middle East / MENA",
+    "raw_name": "cat__canonical_region_Middle East / MENA",
+    "feature_type": "categorical",
+    "importance": 0.000966,
+    "cumulative_importance": 0.998981
+  },
+  {
+    "feature": "canonical_region_South Asia",
+    "raw_name": "cat__canonical_region_South Asia",
+    "feature_type": "categorical",
+    "importance": 0.000565,
+    "cumulative_importance": 0.999546
+  },
+  {
+    "feature": "type_of_violence_desc_One-sided violence",
+    "raw_name": "cat__type_of_violence_desc_One-sided violence",
+    "feature_type": "categorical",
+    "importance": 0.000453,
+    "cumulative_importance": 0.999999
+  },
+  {
+    "feature": "canonical_region_East Asia",
+    "raw_name": "cat__canonical_region_East Asia",
+    "feature_type": "categorical",
+    "importance": 0.0,
+    "cumulative_importance": 0.999999
+  },
+  {
+    "feature": "canonical_region_North America",
+    "raw_name": "cat__canonical_region_North America",
+    "feature_type": "categorical",
+    "importance": 0.0,
+    "cumulative_importance": 0.999999
+  },
+  {
+    "feature": "type_of_violence_desc_State-based armed conflict",
+    "raw_name": "cat__type_of_violence_desc_State-based armed conflict",
+    "feature_type": "categorical",
+    "importance": 0.0,
+    "cumulative_importance": 0.999999
+  },
+  {
+    "feature": "type_of_violence_desc_State-based border military clash",
+    "raw_name": "cat__type_of_violence_desc_State-based border military clash",
+    "feature_type": "categorical",
+    "importance": 0.0,
+    "cumulative_importance": 0.999999
+  },
+  {
+    "feature": "type_of_violence_desc_State-based military brinkmanship / ICBM escalation",
+    "raw_name": "cat__type_of_violence_desc_State-based military brinkmanship / ICBM escalation",
+    "feature_type": "categorical",
+    "importance": 0.0,
+    "cumulative_importance": 0.999999
+  },
+  {
+    "feature": "type_of_violence_desc_State-based military encirclement & live-fire exercises",
+    "raw_name": "cat__type_of_violence_desc_State-based military encirclement & live-fire exercises",
+    "feature_type": "categorical",
+    "importance": 0.0,
+    "cumulative_importance": 0.999999
+  }
+]

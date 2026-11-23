@@ -1,0 +1,424 @@
+{
+  "dataset_summary": {
+    "total_samples": 310,
+    "train_samples": 216,
+    "test_samples": 94,
+    "train_date_range": [
+      "2015-01-31",
+      "2022-12-29"
+    ],
+    "test_date_range": [
+      "2023-01-26",
+      "2025-12-25"
+    ],
+    "unique_conflicts_train": 30,
+    "unique_conflicts_test": 19
+  },
+  "models": {
+    "random_forest": {
+      "algorithm": "RandomForestRegressor",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 5,
+        "min_samples_split": 5,
+        "random_state": 42
+      },
+      "group_kfold_cv_train": {
+        "n_splits": 5,
+        "group_column": "conflict_new_id",
+        "targets": {
+          "sp500_fwd_ret_5d": {
+            "cv_mae_mean": 1.7022,
+            "cv_mae_std": 0.1811,
+            "cv_rmse_mean": 2.4486,
+            "cv_rmse_std": 0.2555,
+            "cv_r2_mean": -0.1373,
+            "cv_r2_std": 0.1716
+          },
+          "sp500_fwd_ret_20d": {
+            "cv_mae_mean": 3.1046,
+            "cv_mae_std": 0.464,
+            "cv_rmse_mean": 4.3625,
+            "cv_rmse_std": 0.6769,
+            "cv_r2_mean": 0.0559,
+            "cv_r2_std": 0.0851
+          },
+          "nasdaq_fwd_ret_5d": {
+            "cv_mae_mean": 2.0193,
+            "cv_mae_std": 0.195,
+            "cv_rmse_mean": 2.7016,
+            "cv_rmse_std": 0.2888,
+            "cv_r2_mean": -0.0462,
+            "cv_r2_std": 0.0652
+          },
+          "nasdaq_fwd_ret_20d": {
+            "cv_mae_mean": 3.8292,
+            "cv_mae_std": 0.7465,
+            "cv_rmse_mean": 5.144,
+            "cv_rmse_std": 1.023,
+            "cv_r2_mean": 0.0938,
+            "cv_r2_std": 0.1049
+          },
+          "dow_jones_fwd_ret_5d": {
+            "cv_mae_mean": 1.7032,
+            "cv_mae_std": 0.1852,
+            "cv_rmse_mean": 2.4562,
+            "cv_rmse_std": 0.3793,
+            "cv_r2_mean": -0.1524,
+            "cv_r2_std": 0.1759
+          },
+          "dow_jones_fwd_ret_20d": {
+            "cv_mae_mean": 3.1465,
+            "cv_mae_std": 0.4656,
+            "cv_rmse_mean": 4.5171,
+            "cv_rmse_std": 0.5693,
+            "cv_r2_mean": 0.0231,
+            "cv_r2_std": 0.0582
+          },
+          "russell2000_fwd_ret_5d": {
+            "cv_mae_mean": 2.2164,
+            "cv_mae_std": 0.189,
+            "cv_rmse_mean": 2.9767,
+            "cv_rmse_std": 0.3098,
+            "cv_r2_mean": -0.068,
+            "cv_r2_std": 0.0687
+          },
+          "russell2000_fwd_ret_20d": {
+            "cv_mae_mean": 4.1023,
+            "cv_mae_std": 0.238,
+            "cv_rmse_mean": 5.8252,
+            "cv_rmse_std": 0.8012,
+            "cv_r2_mean": 0.0805,
+            "cv_r2_std": 0.072
+          }
+        }
+      },
+      "in_sample_train_metrics": {
+        "macro_avg_mae": 2.0406,
+        "macro_avg_rmse": 2.7622,
+        "macro_avg_r2": 0.4312,
+        "targets": {
+          "sp500_fwd_ret_5d": {
+            "mae": 1.3841,
+            "rmse": 1.9234,
+            "r2": 0.3016,
+            "mean_actual": 0.2711,
+            "std_actual": 2.3015,
+            "mean_predicted": 0.2889,
+            "std_predicted": 0.6556
+          },
+          "sp500_fwd_ret_20d": {
+            "mae": 2.1114,
+            "rmse": 2.8833,
+            "r2": 0.5805,
+            "mean_actual": 0.7656,
+            "std_actual": 4.452,
+            "mean_predicted": 0.7421,
+            "std_predicted": 2.1579
+          },
+          "nasdaq_fwd_ret_5d": {
+            "mae": 1.7039,
+            "rmse": 2.1801,
+            "r2": 0.3166,
+            "mean_actual": 0.3995,
+            "std_actual": 2.6373,
+            "mean_predicted": 0.4145,
+            "std_predicted": 0.7961
+          },
+          "nasdaq_fwd_ret_20d": {
+            "mae": 2.7217,
+            "rmse": 3.5911,
+            "r2": 0.5534,
+            "mean_actual": 1.0022,
+            "std_actual": 5.3737,
+            "mean_predicted": 0.9858,
+            "std_predicted": 2.5585
+          },
+          "dow_jones_fwd_ret_5d": {
+            "mae": 1.3876,
+            "rmse": 1.9515,
+            "r2": 0.2813,
+            "mean_actual": 0.2248,
+            "std_actual": 2.302,
+            "mean_predicted": 0.2464,
+            "std_predicted": 0.6162
+          },
+          "dow_jones_fwd_ret_20d": {
+            "mae": 2.2229,
+            "rmse": 3.0947,
+            "r2": 0.5326,
+            "mean_actual": 0.7417,
+            "std_actual": 4.5268,
+            "mean_predicted": 0.7148,
+            "std_predicted": 2.0588
+          },
+          "russell2000_fwd_ret_5d": {
+            "mae": 1.8211,
+            "rmse": 2.4145,
+            "r2": 0.3285,
+            "mean_actual": 0.2577,
+            "std_actual": 2.9464,
+            "mean_predicted": 0.2601,
+            "std_predicted": 0.8992
+          },
+          "russell2000_fwd_ret_20d": {
+            "mae": 2.9724,
+            "rmse": 4.0591,
+            "r2": 0.5552,
+            "mean_actual": 0.7607,
+            "std_actual": 6.0862,
+            "mean_predicted": 0.7632,
+            "std_predicted": 2.8527
+          }
+        }
+      },
+      "out_of_sample_test_metrics": {
+        "macro_avg_mae": 3.0927,
+        "macro_avg_rmse": 3.7548,
+        "macro_avg_r2": -0.253,
+        "targets": {
+          "sp500_fwd_ret_5d": {
+            "mae": 1.5154,
+            "rmse": 1.9152,
+            "r2": 0.0352,
+            "mean_actual": 0.2979,
+            "std_actual": 1.9498,
+            "mean_predicted": -0.0139,
+            "std_predicted": 0.3334
+          },
+          "sp500_fwd_ret_20d": {
+            "mae": 3.83,
+            "rmse": 4.5129,
+            "r2": -0.6966,
+            "mean_actual": 1.3611,
+            "std_actual": 3.4647,
+            "mean_predicted": -1.7747,
+            "std_predicted": 0.8999
+          },
+          "nasdaq_fwd_ret_5d": {
+            "mae": 2.1664,
+            "rmse": 2.7141,
+            "r2": -0.0042,
+            "mean_actual": 0.4365,
+            "std_actual": 2.7085,
+            "mean_predicted": -0.2356,
+            "std_predicted": 0.4006
+          },
+          "nasdaq_fwd_ret_20d": {
+            "mae": 5.1264,
+            "rmse": 6.0109,
+            "r2": -0.6028,
+            "mean_actual": 1.8398,
+            "std_actual": 4.7479,
+            "mean_predicted": -2.1805,
+            "std_predicted": 1.04
+          },
+          "dow_jones_fwd_ret_5d": {
+            "mae": 1.373,
+            "rmse": 1.7396,
+            "r2": 0.02,
+            "mean_actual": 0.2225,
+            "std_actual": 1.7573,
+            "mean_predicted": 0.1642,
+            "std_predicted": 0.3161
+          },
+          "dow_jones_fwd_ret_20d": {
+            "mae": 3.2617,
+            "rmse": 3.8961,
+            "r2": -0.4667,
+            "mean_actual": 0.9631,
+            "std_actual": 3.2171,
+            "mean_predicted": -1.4847,
+            "std_predicted": 0.9164
+          },
+          "russell2000_fwd_ret_5d": {
+            "mae": 2.391,
+            "rmse": 3.0244,
+            "r2": 0.0087,
+            "mean_actual": 0.2285,
+            "std_actual": 3.0376,
+            "mean_predicted": -0.2069,
+            "std_predicted": 0.4179
+          },
+          "russell2000_fwd_ret_20d": {
+            "mae": 5.0776,
+            "rmse": 6.2253,
+            "r2": -0.3173,
+            "mean_actual": 0.9531,
+            "std_actual": 5.4239,
+            "mean_predicted": -2.3097,
+            "std_predicted": 1.2463
+          }
+        }
+      }
+    },
+    "ridge_regression": {
+      "algorithm": "Ridge",
+      "hyperparameters": {
+        "alpha": 10.0,
+        "random_state": 42
+      },
+      "out_of_sample_test_metrics": {
+        "macro_avg_mae": 3.4612,
+        "macro_avg_rmse": 4.168,
+        "macro_avg_r2": -0.5222,
+        "targets": {
+          "sp500_fwd_ret_5d": {
+            "mae": 1.6586,
+            "rmse": 2.0693,
+            "r2": -0.1263,
+            "mean_actual": 0.2979,
+            "std_actual": 1.9498,
+            "mean_predicted": -0.2049,
+            "std_predicted": 0.5883
+          },
+          "sp500_fwd_ret_20d": {
+            "mae": 4.3664,
+            "rmse": 5.0684,
+            "r2": -1.14,
+            "mean_actual": 1.3611,
+            "std_actual": 3.4647,
+            "mean_predicted": -2.3743,
+            "std_predicted": 1.2544
+          },
+          "nasdaq_fwd_ret_5d": {
+            "mae": 2.2785,
+            "rmse": 2.8384,
+            "r2": -0.0983,
+            "mean_actual": 0.4365,
+            "std_actual": 2.7085,
+            "mean_predicted": -0.4236,
+            "std_predicted": 0.6006
+          },
+          "nasdaq_fwd_ret_20d": {
+            "mae": 5.8537,
+            "rmse": 6.7696,
+            "r2": -1.0329,
+            "mean_actual": 1.8398,
+            "std_actual": 4.7479,
+            "mean_predicted": -3.1488,
+            "std_predicted": 1.5003
+          },
+          "dow_jones_fwd_ret_5d": {
+            "mae": 1.5153,
+            "rmse": 1.8995,
+            "r2": -0.1684,
+            "mean_actual": 0.2225,
+            "std_actual": 1.7573,
+            "mean_predicted": 0.0077,
+            "std_predicted": 0.6097
+          },
+          "dow_jones_fwd_ret_20d": {
+            "mae": 3.4919,
+            "rmse": 4.147,
+            "r2": -0.6617,
+            "mean_actual": 0.9631,
+            "std_actual": 3.2171,
+            "mean_predicted": -1.5313,
+            "std_predicted": 1.2084
+          },
+          "russell2000_fwd_ret_5d": {
+            "mae": 2.5328,
+            "rmse": 3.2141,
+            "r2": -0.1196,
+            "mean_actual": 0.2285,
+            "std_actual": 3.0376,
+            "mean_predicted": -0.2943,
+            "std_predicted": 0.6275
+          },
+          "russell2000_fwd_ret_20d": {
+            "mae": 5.9925,
+            "rmse": 7.3379,
+            "r2": -0.8302,
+            "mean_actual": 0.9531,
+            "std_actual": 5.4239,
+            "mean_predicted": -3.4441,
+            "std_predicted": 1.7271
+          }
+        }
+      }
+    },
+    "mean_baseline": {
+      "algorithm": "HistoricalMeanPredictor",
+      "out_of_sample_test_metrics": {
+        "macro_avg_mae": 2.5519,
+        "macro_avg_rmse": 3.3053,
+        "macro_avg_r2": -0.0084,
+        "targets": {
+          "sp500_fwd_ret_5d": {
+            "mae": 1.4794,
+            "rmse": 1.95,
+            "r2": -0.0002,
+            "mean_actual": 0.2979,
+            "std_actual": 1.9498,
+            "mean_predicted": 0.2711,
+            "std_predicted": 0.0
+          },
+          "sp500_fwd_ret_20d": {
+            "mae": 2.713,
+            "rmse": 3.5155,
+            "r2": -0.0295,
+            "mean_actual": 1.3611,
+            "std_actual": 3.4647,
+            "mean_predicted": 0.7656,
+            "std_predicted": 0.0
+          },
+          "nasdaq_fwd_ret_5d": {
+            "mae": 2.0749,
+            "rmse": 2.7087,
+            "r2": -0.0002,
+            "mean_actual": 0.4365,
+            "std_actual": 2.7085,
+            "mean_predicted": 0.3995,
+            "std_predicted": 0.0
+          },
+          "nasdaq_fwd_ret_20d": {
+            "mae": 3.4976,
+            "rmse": 4.8212,
+            "r2": -0.0311,
+            "mean_actual": 1.8398,
+            "std_actual": 4.7479,
+            "mean_predicted": 1.0022,
+            "std_predicted": 0.0
+          },
+          "dow_jones_fwd_ret_5d": {
+            "mae": 1.3646,
+            "rmse": 1.7573,
+            "r2": -0.0,
+            "mean_actual": 0.2225,
+            "std_actual": 1.7573,
+            "mean_predicted": 0.2248,
+            "std_predicted": 0.0
+          },
+          "dow_jones_fwd_ret_20d": {
+            "mae": 2.6036,
+            "rmse": 3.2247,
+            "r2": -0.0047,
+            "mean_actual": 0.9631,
+            "std_actual": 3.2171,
+            "mean_predicted": 0.7417,
+            "std_predicted": 0.0
+          },
+          "russell2000_fwd_ret_5d": {
+            "mae": 2.3844,
+            "rmse": 3.0377,
+            "r2": -0.0001,
+            "mean_actual": 0.2285,
+            "std_actual": 3.0376,
+            "mean_predicted": 0.2577,
+            "std_predicted": 0.0
+          },
+          "russell2000_fwd_ret_20d": {
+            "mae": 4.2978,
+            "rmse": 5.4273,
+            "r2": -0.0013,
+            "mean_actual": 0.9531,
+            "std_actual": 5.4239,
+            "mean_predicted": 0.7607,
+            "std_predicted": 0.0
+          }
+        }
+      }
+    }
+  }
+}

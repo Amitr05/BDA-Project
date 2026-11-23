@@ -1,0 +1,63 @@
+{
+  "model_version": "1.0.0",
+  "primary_model": "RandomForestRegressor",
+  "target_columns": [
+    "sp500_fwd_ret_5d",
+    "sp500_fwd_ret_20d",
+    "nasdaq_fwd_ret_5d",
+    "nasdaq_fwd_ret_20d",
+    "dow_jones_fwd_ret_5d",
+    "dow_jones_fwd_ret_20d",
+    "russell2000_fwd_ret_5d",
+    "russell2000_fwd_ret_20d"
+  ],
+  "numeric_features": [
+    "fatalities_best",
+    "log_fatalities",
+    "incident_count",
+    "pre_5d_return_mkt",
+    "pre_20d_return_mkt",
+    "rolling_21d_vol_mkt",
+    "annualized_21d_vol_mkt",
+    "sma_50_ratio_mkt",
+    "vix_level",
+    "vix_5d_change_pct",
+    "yield_spread_10y2y",
+    "treasury_yield_10y",
+    "treasury_yield_2y"
+  ],
+  "categorical_features": [
+    "canonical_region",
+    "duration_regime",
+    "type_of_violence_desc"
+  ],
+  "feature_medians": {
+    "fatalities_best": 48.0,
+    "log_fatalities": 3.8918202981106265,
+    "incident_count": 5.0,
+    "pre_5d_return_mkt": 0.3460844781517314,
+    "pre_20d_return_mkt": 1.3619198641777963,
+    "rolling_21d_vol_mkt": 0.007647226865598792,
+    "annualized_21d_vol_mkt": 12.13959630339982,
+    "sma_50_ratio_mkt": 1.478975410189387,
+    "vix_level": 16.690000534057617,
+    "vix_5d_change_pct": -1.5591361624818778,
+    "yield_spread_10y2y": 0.7,
+    "treasury_yield_10y": 2.085,
+    "treasury_yield_2y": 1.21
+  },
+  "canonical_regions": [
+    "Middle East / MENA",
+    "Eastern Europe",
+    "South Asia",
+    "East Asia",
+    "North America"
+  ],
+  "duration_regimes": [
+    "Short / Tactical",
+    "Medium / Campaign",
+    "Protracted / War"
+  ],
+  "train_samples": 216,
+  "test_samples": 94
+}
