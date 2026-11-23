@@ -1,0 +1,33 @@
+{
+  "status": "SUCCESS",
+  "raw_incidents_filtered": 210249,
+  "conflict_episodes_constructed": 314,
+  "min_date": "2015-01-01",
+  "max_date": "2025-12-25",
+  "regional_breakdown": {
+    "Middle East / MENA": 123,
+    "South Asia": 115,
+    "Eastern Europe": 57,
+    "North America": 16,
+    "East Asia": 3
+  },
+  "provenance_breakdown": {
+    "UCDP GED v26.1 (Aggregated Episode)": 310,
+    "Curated Historical Milestone": 4
+  },
+  "violence_type_breakdown": {
+    "State-based armed conflict": 275,
+    "Non-state armed conflict": 27,
+    "One-sided violence": 8,
+    "State-based military brinkmanship / ICBM escalation": 1,
+    "State-based military encirclement & live-fire exercises": 1,
+    "State-based military encirclement & joint strike drills": 1,
+    "State-based border military clash": 1
+  },
+  "total_fatalities_best": 21881.0,
+  "avg_fatalities_per_episode": 69.68471337579618,
+  "washout_window_days": 28,
+  "min_fatalities_threshold": 25,
+  "parquet_path": "C:\\Users\\Amit Ravi Mishra\\Amit\\Coding\\BDA_Project\\BDA-Project\\data\\processed\\conflict_episodes\\conflict_episodes.parquet",
+  "csv_path": "C:\\Users\\Amit Ravi Mishra\\Amit\\Coding\\BDA_Project\\BDA-Project\\data\\processed\\conflict_episodes\\conflict_episodes.csv"
+}

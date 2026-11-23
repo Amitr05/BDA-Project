@@ -195,3 +195,99 @@ The Streamlit dashboard (`dashboard/app.py`) provides 14 interactive analytical 
     - Econometric assumptions, limitations, and correlation-vs-causation callout.
 14. **Macroeconomic Regime Conditioning & Equity Volatility Dynamics**:
     - Conditioned market performance across historical yield curve inversion regimes and inflation regimes.
+
+---
+
+## 8. Machine Learning Extension: Geopolitical Conflict & Armed Escalation Market Impact Prediction
+
+### 8.1 Objective & Fixed Category Hierarchy
+The machine learning extension forecasts the forward financial return impact of geopolitical conflict shocks on major US equity benchmark indices:
+- **Primary Event Category**: Strictly **War and Armed Conflicts**.
+- **Five Canonical Geographical Subcategories**:
+  1. `Middle East / MENA` (121 historical training episodes)
+  2. `Eastern Europe` (56 historical training episodes)
+  3. `South Asia` (114 historical training episodes)
+  4. `East Asia` (3 historical training episodes; Taiwan Strait & Korean Peninsula crises)
+  5. `North America` (16 historical training episodes; domestic violent extremist incidents)
+- **Four Benchmark Prediction Targets**: S&P 500 (`^GSPC`), NASDAQ Composite (`^IXIC`), Dow Jones Industrial Average (`^DJI`), Russell 2000 (`^RUT`).
+- **Two Prediction Horizons**: **5 trading days** ($R_{+5}$) and **20 trading days** ($R_{+20}$).
+- **Total Simultaneous Outputs**: Exactly **eight continuous numerical percentage returns** generated per scenario.
+
+### 8.2 Datasets & PySpark Preprocessing
+- **UCDP GED v26.1**: Uppsala Conflict Data Program Georeferenced Event Dataset (417,968 raw incident records across 126 countries, 1989–2025).
+- **PySpark Conflict Pipeline (`src/preprocessing/conflict_pipeline.py`)**:
+  - Filters high temporal precision (`date_prec <= 2`, 2015–2025 window: 210,249 incidents).
+  - Geographic mapping of all 126 countries to the 5 canonical regions or documented excluded regions.
+  - Spatial-temporal episode clustering: Groups incidents by `(canonical_region, conflict_new_id, event_date)` with $\text{fatalities} \ge 25$.
+  - Applies a 20-trading-day (28-calendar-day) regional washout window to prevent multi-counting single protracted conflicts.
+  - Curated augmentation for East Asia historical escalation milestones (Pelosi Taiwan visit, 2017 North Korea ICBM tests, 2020 Galwan Valley).
+  - Produces `data/processed/conflict_episodes/conflict_episodes.parquet` (**314 independent episodes**).
+
+### 8.3 Feature Engineering & Strict Zero Look-Ahead Protection (`src/ml/feature_engineering.py`)
+- Maps conflict calendar start dates to effective US trading day $T_0$ via `find_effective_trading_day_index`.
+- Strictly excludes ex-post conflict duration from prediction time inputs; duration is discretized into ex-ante operational regimes:
+  - `Short / Tactical (< 30 days)`
+  - `Medium / Campaign (30–180 days)`
+  - `Protracted / War (> 180 days)`
+- Input features evaluated strictly **at or before** $T_0$:
+  - Pre-event market momentum: 5-day return ($R_{-5}$) and 20-day return ($R_{-20}$).
+  - Realized volatility: 21-day annualized volatility ($\sigma_{21\text{D}}$).
+  - Market trend: Price deviation from 50-day Simple Moving Average ($P_{T_0} / \text{SMA}_{50} - 1$).
+  - Implied volatility: Spot VIX level and 5-day percentage change ($\Delta \text{VIX}_{-5}$).
+  - FRED macro conditioning: Point-in-time Treasury 10Y–2Y yield spread, 10Y yield, and 2Y yield.
+  - Conflict intensity: Battle fatalities, log-fatalities, incident count, and violence typology.
+- Persisted to `data/processed/ml/conflict_market_training.parquet` (**310 usable observations × 38 columns, 0 nulls**; 4 early 2015 episodes excluded due to $T_0 < 20$ lookback boundary constraints).
+
+### 8.4 Model Architecture & Evaluation (`src/ml/train_models.py`)
+- **Primary Model**: Unified Multi-Output `RandomForestRegressor(n_estimators=100, max_depth=5, min_samples_split=5, random_state=42)`.
+  - Natively predicts all 8 continuous returns simultaneously in leaf node vectors.
+  - Captures piecewise non-linear regime shifts (e.g. market response differences when spot VIX > 25 vs < 13).
+  - Constrained tree depth acts as structural regularization against financial time-series noise.
+- **Baseline Model**: Multi-Output `Ridge(alpha=10.0)` with `StandardScaler` and `OneHotEncoder`.
+- **Validation Framework**:
+  - *Chronological Split*: Train on 2015–2022 (216 episodes, 30 conflicts), Test out-of-sample on 2023–2025 (94 episodes, 19 conflicts).
+  - *Conflict-Grouped Cross-Validation*: 5-fold `GroupKFold` grouped by `conflict_new_id` within the training set.
+- **Out-of-Sample Performance Comparison (2023–2025 Test Set)**:
+  - Random Forest beats Ridge regression across **all 8 targets** (Macro Avg MAE: $3.093\%$ vs $3.461\%$; RMSE: $3.755\%$ vs $4.168\%$).
+  - Positive out-of-sample $R^2$ achieved on 5-day horizon: S&P 500 ($+0.035$), Dow Jones ($+0.020$), Russell 2000 ($+0.009$).
+  - Negative $R^2$ on 20-day horizon reflects the 2023–2025 mega-cap AI secular bull market regime shift compared to the 2015–2022 training regime.
+- **Key Feature Importances**:
+  - Implied Volatility (`vix_level`): 24.40%
+  - Market Trend (`sma_50_ratio_mkt`): 13.70%
+  - Short-End Yields (`treasury_yield_2y`): 11.97%
+  - Pre-Event Momentum (`pre_20d_return_mkt`): 9.66%
+  - Financial/macro conditioning accounts for >78% of predictive power.
+
+### 8.5 Prediction Engine & Dashboard Integration (`src/ml/predictor.py` & `dashboard/app.py`)
+- Integrated into Streamlit as **Module 4: AI/ML Conflict Impact Predictor**:
+  - Interactive scenario definition (canonical region, expected duration in days, fatalities, violence type).
+  - Market condition adjustments with historical training median fallbacks.
+  - Exact prediction table with all 8 returns across the four benchmarks.
+  - Side-by-side Plotly bar chart comparing 5-day and 20-day predicted returns.
+  - Synthesized econometric explanation card based on key model drivers.
+  - Empirical data sparsity warnings for East Asia and North America.
+  - Diagnostic tabs displaying feature importance, out-of-sample performance scorecards, and model metadata.
+
+### 8.6 Execution Commands
+```bash
+# 1. Run PySpark Conflict Preprocessing Pipeline:
+python -m src.preprocessing.conflict_pipeline
+
+# 2. Generate Supervised Feature & Target Dataset:
+python -m src.ml.feature_engineering
+
+# 3. Train Models, Run Cross-Validation, & Save Artifacts:
+python -m src.ml.train_models
+
+# 4. Launch Streamlit Dashboard with AI/ML Predictor Module:
+python -m streamlit run dashboard/app.py
+
+# 5. Run Complete Test Suite (198 Tests):
+pytest tests/ -v
+```
+
+### 8.7 Known Limitations & Academic Disclaimers
+1. **Severe Data Sparsity in East Asia**: Only 3 historical conflict escalation episodes occurred in East Asia (Taiwan Strait / Korean Peninsula) during 2015–2025. Predictions rely heavily on cross-regional transfer learning.
+2. **North America Typology**: The 16 North American incidents reflect domestic violent extremism rather than conventional interstate warfare.
+3. **Macroeconomic Non-Stationarity**: Forward return relationships are influenced by monetary regime shifts (e.g. 2022 rate hike cycle vs. 2023–2025 AI bull market).
+4. **Correlation $\neq$ Causation**: Model predictions represent econometric statistical estimates conditional on historical patterns, not guaranteed causal forecasts or trading advice.

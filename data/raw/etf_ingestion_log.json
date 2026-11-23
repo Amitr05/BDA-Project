@@ -1,23 +1,17 @@
 {
-  "timestamp_utc": "2026-11-18T18:29:36.136199+00:00",
-  "target_count": 8,
-  "successful_count": 8,
-  "skipped_from_cache": 8,
+  "timestamp_utc": "2026-11-22T20:13:53.693717+00:00",
+  "target_count": 2,
+  "successful_count": 2,
+  "skipped_from_cache": 2,
   "newly_downloaded": 0,
   "failed_count": 0,
   "successful_tickers": [
-    "XLE",
     "XLF",
-    "XLI",
-    "XLK",
-    "XLP",
-    "XLU",
-    "XLV",
-    "XLY"
+    "XLK"
   ],
   "failed_tickers": {},
   "combined_raw_csv": "data/raw/etfs/sector_etfs_raw.csv",
-  "output_directory": "data/raw/etfs",
+  "output_directory": "C:\\Users\\AMITRA~1\\AppData\\Local\\Temp\\tmpxzb1x_7z",
   "start_date": "2015-01-01",
   "end_date": "2026-02-01"
 }

@@ -1,0 +1,28 @@
+feature,raw_name,feature_type,importance,cumulative_importance
+vix_level,num__vix_level,numeric,0.243975,0.243975
+sma_50_ratio_mkt,num__sma_50_ratio_mkt,numeric,0.136955,0.38093
+treasury_yield_2y,num__treasury_yield_2y,numeric,0.119748,0.500678
+pre_20d_return_mkt,num__pre_20d_return_mkt,numeric,0.096559,0.597237
+treasury_yield_10y,num__treasury_yield_10y,numeric,0.079124,0.676361
+yield_spread_10y2y,num__yield_spread_10y2y,numeric,0.059619,0.73598
+pre_5d_return_mkt,num__pre_5d_return_mkt,numeric,0.05339,0.78937
+rolling_21d_vol_mkt,num__rolling_21d_vol_mkt,numeric,0.042183,0.831553
+annualized_21d_vol_mkt,num__annualized_21d_vol_mkt,numeric,0.038563,0.870116
+vix_5d_change_pct,num__vix_5d_change_pct,numeric,0.038532,0.908648
+fatalities_best,num__fatalities_best,numeric,0.030715,0.939363
+log_fatalities,num__log_fatalities,numeric,0.022617,0.96198
+incident_count,num__incident_count,numeric,0.021242,0.983222
+duration_regime_Medium / Campaign,cat__duration_regime_Medium / Campaign,categorical,0.008437,0.991659
+duration_regime_Protracted / War,cat__duration_regime_Protracted / War,categorical,0.001745,0.993404
+canonical_region_Eastern Europe,cat__canonical_region_Eastern Europe,categorical,0.001571,0.994975
+type_of_violence_desc_Non-state armed conflict,cat__type_of_violence_desc_Non-state armed conflict,categorical,0.001559,0.996534
+duration_regime_Short / Tactical,cat__duration_regime_Short / Tactical,categorical,0.001481,0.998015
+canonical_region_Middle East / MENA,cat__canonical_region_Middle East / MENA,categorical,0.000966,0.998981
+canonical_region_South Asia,cat__canonical_region_South Asia,categorical,0.000565,0.999546
+type_of_violence_desc_One-sided violence,cat__type_of_violence_desc_One-sided violence,categorical,0.000453,0.999999
+canonical_region_East Asia,cat__canonical_region_East Asia,categorical,0.0,0.999999
+canonical_region_North America,cat__canonical_region_North America,categorical,0.0,0.999999
+type_of_violence_desc_State-based armed conflict,cat__type_of_violence_desc_State-based armed conflict,categorical,0.0,0.999999
+type_of_violence_desc_State-based border military clash,cat__type_of_violence_desc_State-based border military clash,categorical,0.0,0.999999
+type_of_violence_desc_State-based military brinkmanship / ICBM escalation,cat__type_of_violence_desc_State-based military brinkmanship / ICBM escalation,categorical,0.0,0.999999
+type_of_violence_desc_State-based military encirclement & live-fire exercises,cat__type_of_violence_desc_State-based military encirclement & live-fire exercises,categorical,0.0,0.999999
