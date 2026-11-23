@@ -1,11 +1,11 @@
 {
-  "timestamp_utc": "2026-11-22T20:13:27.700982+00:00",
+  "timestamp_utc": "2026-11-23T18:05:38.160805+00:00",
   "total_target_companies": 3,
   "successful_count": 2,
   "skipped_from_cache": 2,
   "newly_downloaded": 0,
   "failed_count": 3,
-  "output_directory": "C:\\Users\\AMITRA~1\\AppData\\Local\\Temp\\tmppp0pof1a\\stocks",
+  "output_directory": "C:\\Users\\Pranav\\AppData\\Local\\Temp\\tmpmk7_ec8_\\stocks",
   "start_date": "2024-01-01",
   "end_date": "2024-01-10"
 }

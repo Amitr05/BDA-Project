@@ -1,5 +1,5 @@
 {
-  "timestamp_utc": "2026-11-22T20:13:53.693717+00:00",
+  "timestamp_utc": "2026-11-23T18:06:24.087220+00:00",
   "target_count": 2,
   "successful_count": 2,
   "skipped_from_cache": 2,
@@ -11,7 +11,7 @@
   ],
   "failed_tickers": {},
   "combined_raw_csv": "data/raw/etfs/sector_etfs_raw.csv",
-  "output_directory": "C:\\Users\\AMITRA~1\\AppData\\Local\\Temp\\tmpxzb1x_7z",
+  "output_directory": "C:\\Users\\Pranav\\AppData\\Local\\Temp\\tmpw_uxmvru",
   "start_date": "2015-01-01",
   "end_date": "2026-02-01"
 }
